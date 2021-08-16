@@ -21,39 +21,6 @@ reStructuredText syntax, this plugin highlights commonly
 used items (like emails) and disables spell checking on
 items that shouldn't be spell checked (like emails!).
 
-Usage: Set `redrawtime`, maybe
-==============================
-
-This plugin has no configuration, but you might need to configure
-Vim's ``redrawtimeout``.
-
-For large reST documents, you might want to add a modeline that
-sets a higher timeout than the default (2000, or 2 seconds),
-otherwise highlighting is stopped when the timeout is reached.
-
-E.g., atop each reST file, add the commented modeline::
-
-  .. vim:rdt=10000
-
-You could also apply the setting globally from your ``~/.vimrc``
-or similar.
-
-Usage: Use magic `redrawtime=4999` to disable highlights
-========================================================
-
-If you'd like to disable the extended highlights, set the
-``redrawtime`` to 4999 or below (but not the default, 2000).
-
-E.g., atop the reST file you'd like to disable the extra
-highlighting on, add the commented modeline::
-
-  .. vim:rdt=4999
-
-This will also disable a few of the standard reST syntax
-highlights that tend to take longer to process, including
-citation, footnote, and substitution references, and
-inline internal targets.
-
 Features: Extended Highlights
 =============================
 
@@ -115,6 +82,39 @@ Pretty basic. The following URLs will be highlighted::
   chrome://<foo>
 
   about:config
+
+Usage: Set `redrawtime`, maybe
+==============================
+
+This plugin has no configuration, but you might need to configure
+Vim's ``redrawtimeout``.
+
+For large reST documents, you might want to add a modeline that
+sets a higher timeout than the default (2000, or 2 seconds),
+otherwise highlighting is stopped when the timeout is reached.
+
+E.g., atop each reST file, add the commented modeline::
+
+  .. vim:rdt=10000
+
+You could also apply the setting globally from your ``~/.vimrc``
+or similar.
+
+Usage: Use magic `redrawtime=4999` to disable highlights
+========================================================
+
+If you'd like to disable the extended highlights, set the
+``redrawtime`` to 4999 or below (but not the default, 2000).
+
+E.g., atop the reST file you'd like to disable the extra
+highlighting on, add the commented modeline::
+
+  .. vim:rdt=4999
+
+This will also disable a few of the standard reST syntax
+highlights that tend to take longer to process, including
+citation, footnote, and substitution references, and
+inline internal targets.
 
 Tips: Related supercharged reST plugins
 =======================================
