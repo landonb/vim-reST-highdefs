@@ -206,10 +206,6 @@ function! s:DubsRestWireBasic()
 
   if (l:redrawtimeout == l:defaultRedrawTimeout)
      \ || (l:redrawtimeout > l:syntaxEnableIfGreater)
-    " Acronyms first, which is loosest pattern, so others override
-    " (esp. passwords, which often have 3+ consec. uppers/digits).
-    " Otherwise, if this came last, it would undo FIVER highlights.
-    call s:DubsSyn_AcronymNoSpell()
     " Passwords first, so URL and Email matches override.
     if l:fileLineLen < l:passwordThreshold
       call s:DubsSyn_PasswordPossibly()
