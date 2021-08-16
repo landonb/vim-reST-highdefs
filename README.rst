@@ -47,8 +47,8 @@ an at sign is highlighted and not spell checked. E.g.,::
 
   @bingo
 
-Highlight: Acronyms
--------------------
+NoSpell: Acronyms
+-----------------
 
 I got tired of adding capitalized acronyms to the Vim dictionary, so
 I created a rule to disable spell checking on any all-caps alphanumeric
@@ -71,8 +71,11 @@ there at one point, but it makes the matching a lot slower). E.g.,::
 Note that you definitely don't want to store passwords in your notes,
 so this highlight can be used to warn you if you accidentally do.
 
-And you might also find this highlight useful if you've wired
-``pass edit`` to open password store entries in Vim.
+And you might also find this highlight useful if you've |wired-pass-edit|_
+to open `password store <https://www.passwordstore.org/>`__ entries in Vim.
+
+.. |wired-pass-edit| replace:: wired ``pass edit``
+.. _wired-pass-edit: https://github.com/landonb/password-store
 
 Highlight: Browser config hyperlinks
 ------------------------------------
@@ -83,11 +86,11 @@ Pretty basic. The following URLs will be highlighted::
 
   about:config
 
-Usage: Set `redrawtime`, maybe
-==============================
+Usage: Set ``redrawtime``, maybe
+================================
 
 This plugin has no configuration, but you might need to configure
-Vim's ``redrawtimeout``.
+Vim's ``redrawtime``.
 
 For large reST documents, you might want to add a modeline that
 sets a higher timeout than the default (2000, or 2 seconds),
@@ -100,8 +103,8 @@ E.g., atop each reST file, add the commented modeline::
 You could also apply the setting globally from your ``~/.vimrc``
 or similar.
 
-Usage: Use magic `redrawtime=4999` to disable highlights
-========================================================
+Usage: Use magic ``redrawtime=4999`` to disable highlights
+==========================================================
 
 If you'd like to disable the extended highlights, set the
 ``redrawtime`` to 4999 or below (but not the default, 2000).
@@ -119,8 +122,8 @@ inline internal targets.
 Tips: Related supercharged reST plugins
 =======================================
 
-See complementary reST highlights plugins from this author
-that pair well with this plugin to help you take notes in Vim:
+Consider these complementary reST highlights plugins that pair
+well with this plugin to help you take notes in Vim:
 
 - Advanced reST document section folder.
 
@@ -144,8 +147,8 @@ that pair well with this plugin to help you take notes in Vim:
   "FIXED" (crossed-out and purple), and so are "MAYBE", "LEARN",
   "ORDER", and "CHORE", and a few other choice five-letter words.
 
-  Why five letters? So you can use the same action words in section
-  headings, and then the heading titles align nicely when folded.
+  Why five letters? So you can use action words in section headings,
+  and then the heading titles align nicely when folded.
   (So, really, it's important that the action words are all the same
   width, and not necessarily five in length, but *FIXME* is the
   uttermost developer action word, so might as well be five.)
@@ -166,43 +169,32 @@ Installation
 
 Installation is easy using the packages feature (see ``:help packages``).
 
-To install the package so that it will automatically load on Vim startup,
+To install the package such that it automatically loads on Vim startup,
 use a ``start`` directory, e.g.,
-
-.. code-block:: bash
+::
 
     mkdir -p ~/.vim/pack/landonb/start
     cd ~/.vim/pack/landonb/start
 
-If you want to test the package first, make it optional instead
-(see ``:help pack-add``):
-
-.. code-block:: bash
+Or, if you want to test the package first, make it optional instead
+(see ``:help pack-add``)::
 
     mkdir -p ~/.vim/pack/landonb/opt
     cd ~/.vim/pack/landonb/opt
 
-Clone the project to the desired path:
-
-.. code-block:: bash
+Next, clone the project to the path you chose::
 
     git clone https://github.com/landonb/vim-reST-highdefs.git
 
-If you installed to the optional path, tell Vim to load the package:
-
-.. code-block:: vim
+If you installed to the optional path, tell Vim to load the package::
 
    :packadd! vim-reST-highdefs
 
-Just once, tell Vim to build the online help:
-
-.. code-block:: vim
+Just once, tell Vim to build the online help::
 
    :Helptags
 
-Then whenever you want to reference the help from Vim, run:
-
-.. code-block:: vim
+Then whenever you want to reference the help from Vim, run::
 
    :help vim-reST-highdefs
 
