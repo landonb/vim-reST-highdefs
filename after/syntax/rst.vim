@@ -193,6 +193,8 @@ function! s:DubsRestWireBasic()
   let l:redrawtimeout = &rdt
   " MAGIC: Vim's rdt default is 2000 (2 secs.).
   let l:defaultRedrawTimeout = 2000
+  " MAGIC: SYNC_ME: All the vim-reST* plugins use the same redrawtime
+  "        logic: skip special highlights if rdt <= 4999 but not 2000.
   let l:syntaxEnableIfGreater = 4999
 
   " MAGIC: Avoid slower highlights on longer files.
@@ -213,7 +215,7 @@ function! s:DubsRestWireBasic()
       call s:DubsSyn_PasswordPossibly()
     endif
     call s:DubsSyn_rstStandaloneHyperlinkExtended()
-    " Syntax Profiling: EmailNoSpell is costly.
+    " Profiling: EmailNoSpell is costly.
     call s:DubsSyn_EmailNoSpell()
     call s:DubsSyn_AtHostNoSpell()
   else
