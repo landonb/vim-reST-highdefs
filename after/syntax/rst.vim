@@ -6,6 +6,14 @@
 
 " +----------------------------------------------------------------------+
 
+" REF: See complementary reST highlights plugins from this author
+"      (pairs well with this plugin to help you take notes in Vim):
+"
+"   https://github.com/landonb/vim-reSTfold#🙏
+"   https://github.com/landonb/vim-reST-highdefs#🎨
+"   https://github.com/landonb/vim-reST-highfive#🖐
+"   https://github.com/landonb/vim-reST-highline#➖
+
 " REF: See the reST syntax file included with Vim.
 " - E.g.:
 "     /usr/share/vim/vim81/syntax/rst.vim
@@ -13,13 +21,6 @@
 "     ${HOME}/.local/share/vim/vim81/syntax/rst.vim
 " See also the most current upstream source of the same:
 "   https://github.com/marshallward/vim-restructuredtext
-
-" REF: See complementary reST highlights plugins from this author
-"      (pairs well with this plugin to help you take notes in Vim):
-"
-"   https://github.com/landonb/vim-reSTfold#🙏
-"   https://github.com/landonb/vim-reST-highfive#🖐
-"   https://github.com/landonb/vim-reST-highline#➖
 
 " +----------------------------------------------------------------------+
 
