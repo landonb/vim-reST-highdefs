@@ -71,7 +71,7 @@ there at one point, but it makes the matching a lot slower). E.g.,::
 Note that you definitely don't want to store passwords in your notes,
 so this highlight can be used to warn you if you accidentally do.
 
-And you might also find this highlight useful if you've |wired-pass-edit|_
+But really you might also find this highlight useful if you've |wired-pass-edit|_
 to open `password store <https://www.passwordstore.org/>`__ entries in Vim.
 
 .. |wired-pass-edit| replace:: wired ``pass edit``
@@ -80,7 +80,7 @@ to open `password store <https://www.passwordstore.org/>`__ entries in Vim.
 Highlight: Browser config hyperlinks
 ------------------------------------
 
-Pretty basic. The following URLs will be highlighted::
+Pretty basic. The following URL formats will be highlighted::
 
   chrome://<foo>
 

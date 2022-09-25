@@ -1,0 +1,129 @@
+*vim-reST-highdefs.txt*	For Vim version 7.4.	Last change: 2022 Sep 24
+
+Extended reST Syntax Highlights~
+
+RESTRUCTUREDTEXT BONUS SYNTAX HIGHLIGHTS	*vim-reST-highdefs*
+
+1. About This Plugin				|vim-rsthd-about|
+2. Why You Might Want to Use This Plugin	|vim-rsthd-butwhy|
+3. Features: Extended Highlights		|vim-rsthd-features|
+4. Usage: Set `redrawtime`, maybe		|vim-rsthd-redrawtime|
+5. Usage: How to disable highlights		|vim-rsthd-disablement|
+
+==============================================================================
+1. About This Plugin				*vim-rsthd-about*
+
+This plugin extends reStructuredText file types with
+syntax highlights that this author finds useful.
+
+Install this plugin to make it easier to manage
+notes in Vim using reStructuredText markup.
+
+Project page: https://github.com/landonb/vim-reST-highdefs#🎨
+
+==============================================================================
+2. Why You Might Want to Use This Plugin	*vim-rsthd-butwhy*
+
+If you manage (or want to manage) your notes in Vim using
+reStructuredText syntax, this plugin highlights commonly
+used items (like emails) and disables spell checking on
+items that shouldn't be spell checked (like emails!).
+
+==============================================================================
+3. Features: Extended Highlights		*vim-rsthd-features*
+
+The following syntax is recognized by this plugin.
+
+Highlight: Email addresses
+--------------------------
+
+Email addresses are highlighted, and spell checking is disabled. E.g.:
+
+  `foo@bar.com`
+
+The email address domain must be one of:
+
+  `.com | .org | .edu | .us | .io`
+
+Edit the `EmailNoSpell` syntax rule if you'd like to add additional domains.
+
+Highlight: Host names
+---------------------
+
+I sometimes write host names in my notes, so any word that starts with
+an at sign is highlighted and not spell checked. E.g.,:
+
+  `@bingo`
+
+NoSpell: Acronyms
+-----------------
+
+I got tired of adding capitalized acronyms to the Vim dictionary, so
+I created a rule to disable spell checking on any all-caps alphanumeric
+word that's three or more characters long. E.g.,:
+
+  `DONTSPELLCHECKME`
+
+Highlight: Passwords
+--------------------
+
+Anything that looks like a long, strong password will be highlighted.
+We're talking 16 to 24 characters long, and contains at least one each
+of lowercase, uppercase, and numeric characters (I had punctuation in
+there at one point, but it makes the matching a lot slower). E.g.,:
+
+  `abcdEFGH1234wxyz`
+
+Note that you definitely don't want to store passwords in your notes,
+so this highlight can be used to warn you if you accidentally do.
+
+But really you might also find this highlight useful if you've wired
+`pass edit` to open Password Store entries in Vim.
+
+  Password Store: https://www.passwordstore.org/
+  `pass edit` extension: https://github.com/landonb/password-store
+
+Highlight: Browser config hyperlinks
+------------------------------------
+
+Pretty basic. The following URL formats will be highlighted:
+
+  `chrome://<foo>`
+
+  `about:config`
+
+==============================================================================
+4. Usage: Set `redrawtime`, maybe		*vim-rsthd-redrawtime*
+
+This plugin has no configuration, but you might need to configure
+Vim's `redrawtime`.
+
+For large reST documents, you might want to add a modeline that
+sets a higher timeout than the default (2000, or 2 seconds),
+otherwise highlighting is stopped when the timeout is reached.
+
+E.g., atop each reST file, add the commented modeline:
+
+  `.. vim:rdt=10000`
+
+You could also apply the setting globally from your `~/.vimrc`
+or similar.
+
+==============================================================================
+5. Usage: How to disable highlights		*vim-rsthd-disablement*
+
+If you'd like to disable the extended highlights, set the
+`redrawtime` to 4999 or below (but not the default, 2000).
+
+E.g., atop the reST file you'd like to disable the extra
+highlighting on, add the commented modeline:
+
+  `.. vim:rdt=4999`
+
+This will also disable a few of the standard reST syntax
+highlights that tend to take longer to process, including
+citation, footnote, and substitution references, and
+inline internal targets.
+
+ vim:tw=78:ts=8:ft=help:norl:
+
