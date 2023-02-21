@@ -140,7 +140,7 @@ endfunction
 
 " +----------------------------------------------------------------------+
 
-" *** SYNTAX HIGHLIGHT: @Hostnames.
+" *** SYNTAX HIGHLIGHT: @hostnames.
 
 function! s:DubsSyn_AtHostNoSpell()
   " (lb) added this to ignore spelling errors on words such as `@somehost`,
@@ -152,6 +152,17 @@ function! s:DubsSyn_AtHostNoSpell()
   syn match AtHostNoSpell '\(^\|[[:space:]]\|\n\)\zs@[^.,?:\[:space:]\n]\+\([.,?:[:space:]\n]\)\@=' contains=@NoSpell
   " Both LightMagenta and LightRed look good here. Not so much any other Light's.
   hi def AtHostNoSpell guifg=LightMagenta
+endfunction
+
+" +----------------------------------------------------------------------+
+
+" *** SYNTAX HIGHLIGHT: #tags.
+
+function! s:DubsSyn_PoundTagNoSpell()
+  " TRYME:
+  "  :echo matchstr(' I #tag thee ', '\(^\|[[:space:]]\|\n\)\zs#[^.,?:\[:space:]\n]\+\([.,?:[:space:]\n]\)\@=')
+  syn match PoundTagNoSpell '\(^\|[[:space:]]\|\n\)\zs#[^#.,?:\[:space:]\n]\+\([.,?:[:space:]\n]\)\@=' contains=@NoSpell
+  hi def PoundTagNoSpell guifg=Green
 endfunction
 
 " +----------------------------------------------------------------------+
@@ -226,6 +237,7 @@ function! s:DubsRestWireBasic()
     " Profiling: EmailNoSpell is costly.
     call s:DubsSyn_EmailNoSpell()
     call s:DubsSyn_AtHostNoSpell()
+    call s:DubsSyn_PoundTagNoSpell()
   else
     silent! syn clear rstCitationReference
     silent! syn clear rstFootnoteReference
