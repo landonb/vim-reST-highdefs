@@ -126,11 +126,15 @@ endfunction
 
 function! s:DubsSyn_EmailNoSpell()
   " (lb) added this to ignore spelling errors on words such as `emails@somewhere.com`.
-  " NOTE: Look-behind: \([[:space:]\n]\)\@<= ensures space or newline precedes match.
+  " NOTE: Look-behind: \(^\|[[:space:]]\|\n\|<\)\zs
+  "         ensures start of line, space, newline, or  left angle precedes match.
   "   Profiling: Vim docs suggest using \zs to start match, and not look-behind.
-  " NOTE: Look-ahead:  \([[:space:]\n]\)\@=  ensures space or newline follows match.
+  " NOTE: Look-ahead:  \([^[:alnum:]]\|\n\)\@=
+  "         ensures not an alphanum or newlinefollows match.
   "   Profiling: I tested \ze to end match, replacing look-ahead \@=, but not faster.
-  syn match EmailNoSpell '\(^\|[[:space:]]\|\n\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\)\@=' contains=@NoSpell
+  " TRYME:
+  "  :echo matchstr(' <user@domain.com> ', '\(^\|[[:space:]]\|\n\|<\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\)\@=')
+  syn match EmailNoSpell '\(^\|[[:space:]]\|\n\|<\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\)\@=' contains=@NoSpell
   hi def EmailNoSpell guifg=LightGreen
 endfunction
 
