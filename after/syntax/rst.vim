@@ -71,7 +71,9 @@ function! s:DubsSyn_PasswordPossibly()
   " NOTE: Trying {15,16} just to not match too much.
   " CUTE: If I misspell a normal FIXME/YYYY-MM-DD comment, e.g.,
   "       "FiXME/2018-03-21", then it gets highlighted as a password! So cute!!
-  syn match PasswordPossibly '\(^\|[[:space:]]\|\n\)\zs\([^`]\{2\}\)\@=\([^[:space:]]*[a-z]\)\@=\([^[:space:]]*[A-Z]\)\@=\([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,24\}\([[:space:]]\|\n\)\@=' contains=@NoSpell
+  " TRYME:
+  "  :echo matchstr('IamONElongP4sSWoRd', '\%(^\|[[:space:]]\|\n\)\zs\%([^`]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,24\}\%([[:space:]]\|\n\|$\)\@=')
+  syn match PasswordPossibly '\%(^\|[[:space:]]\|\n\)\zs\%([^`]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,24\}\%([[:space:]]\|\n\|$\)\@=' contains=@NoSpell
   " NOTE: We don't need a Password15Best to include special characters unless
   "       we wanted to color them differently; currently, such passwords will
   "       match PasswordPossibly.
@@ -110,13 +112,13 @@ function! s:DubsSyn_EmailNoSpell()
   "         ensures not an alphanum or newlinefollows match.
   "   Profiling: I tested \ze to end match, replacing look-ahead \@=, but not faster.
   " TRYME:
-  "  :echo matchstr( 'user@domain.com',  '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr(' user@domain.com ', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('<user@domain.com>', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('[user@domain.com]', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('(user@domain.com)', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('{user@domain.com}', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\|$\)\@=')
-  syn match EmailNoSpell '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  "  :echo matchstr( 'user@domain.com',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' user@domain.com ', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('<user@domain.com>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[user@domain.com]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('(user@domain.com)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{user@domain.com}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
+  syn match EmailNoSpell '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
   hi def EmailNoSpell guifg=LightGreen
 endfunction
 
@@ -132,13 +134,13 @@ function! s:DubsSyn_AtHostNoSpell()
   "   Profiling: Vim docs suggest using \zs to start match, and not look-behind.
   " NOTE: Look-ahead:  \([[:space:]\n]\)\@=  ensures space or newline follows match.
   " TRYME:
-  "  :echo matchstr( '@host',  '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr(' @host ', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('<@host>', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('[@host]', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('(@host)', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('{@host}', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
-  syn match AtHostNoSpell '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  "  :echo matchstr( '@host',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' @host ', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('<@host>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[@host]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('(@host)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{@host}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  syn match AtHostNoSpell '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
   " Both LightMagenta and LightRed look good here. Not so much any other Light's.
   hi def AtHostNoSpell guifg=LightMagenta
 endfunction
@@ -149,13 +151,13 @@ endfunction
 
 function! s:DubsSyn_PoundTagNoSpell()
   " TRYME:
-  "  :echo matchstr( '#tag',  '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr(' #tag ', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('<#tag>', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('[#tag]', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('(#tag)', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('{#tag}', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
-  syn match PoundTagNoSpell '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  "  :echo matchstr( '#tag',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' #tag ', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('<#tag>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[#tag]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('(#tag)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{#tag}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  syn match PoundTagNoSpell '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
   hi def PoundTagNoSpell guifg=Green
 endfunction
 
@@ -169,8 +171,8 @@ endfunction
 
 function! s:DubsSyn_DobActGoryNoSpell()
   " TRYME:
-  "  :echo matchstr('<Dob Activity@Dob Category>', '<\zs\([[:alnum:]]\| \)\+@\([[:alnum:]]\| \)\+>\@=')
-  syn match DobActGoryNoSpell '<\zs\([[:alnum:]]\| \)\+@\([[:alnum:]]\| \)\+>\@=' contains=@NoSpell
+  "  :echo matchstr('<Dob Activity@Dob Category>', '<\zs\%([[:alnum:]]\| \)\+@\%([[:alnum:]]\| \)\+>\@=')
+  syn match DobActGoryNoSpell '<\zs\%([[:alnum:]]\| \)\+@\%([[:alnum:]]\| \)\+>\@=' contains=@NoSpell
   hi def DobActGoryNoSpell guifg=Orange
 endfunction
 
