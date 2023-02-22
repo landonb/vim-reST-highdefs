@@ -161,6 +161,21 @@ endfunction
 
 " +----------------------------------------------------------------------+
 
+" *** SYNTAX HIGHLIGHT: Dob <Act@Gories>.
+
+" CXREF:
+"
+"   https://github.com/tallybark/dob
+
+function! s:DubsSyn_DobActGoryNoSpell()
+  " TRYME:
+  "  :echo matchstr('<Dob Activity@Dob Category>', '<\zs\([[:alnum:]]\| \)\+@\([[:alnum:]]\| \)\+>\@=')
+  syn match DobActGoryNoSpell '<\zs\([[:alnum:]]\| \)\+@\([[:alnum:]]\| \)\+>\@=' contains=@NoSpell
+  hi def DobActGoryNoSpell guifg=Orange
+endfunction
+
+" +----------------------------------------------------------------------+
+
 " HINT: If syntax highlighting appears disabled, even if the file has
 " a Vim mode line saying otherwise, trying closing and reopening the
 " file, or saving the file and running the `:e` command, or try this:
@@ -232,6 +247,7 @@ function! s:DubsRestWireBasic()
     call s:DubsSyn_EmailNoSpell()
     call s:DubsSyn_AtHostNoSpell()
     call s:DubsSyn_PoundTagNoSpell()
+    call s:DubsSyn_DobActGoryNoSpell()
   else
     silent! syn clear rstCitationReference
     silent! syn clear rstFootnoteReference
