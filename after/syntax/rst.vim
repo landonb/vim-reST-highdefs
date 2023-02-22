@@ -321,10 +321,10 @@ function! s:DubsRestWireBasic()
     call s:DubsSyn_EmailNoSpell()
     call s:DubsSyn_AtHostNoSpell()
     call s:DubsSyn_PoundTagNoSpell()
-    call s:DubsSyn_DobActGoryNoSpell()
     call s:DubsSyn_AccountNumberNoSpell()
     call s:DubsSyn_VersionNumberNoSpell()
     call s:DubsSyn_StrikethroughNoSpell()
+    call s:DubsSyn_DobActGoryNoSpell()
   else
     silent! syn clear rstCitationReference
     silent! syn clear rstFootnoteReference
