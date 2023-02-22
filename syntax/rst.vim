@@ -26,10 +26,11 @@ function! s:DubsSyn_AcronymNoSpell()
   " - Nor spell check an acronym with an 's' at the end.
 
   " TRYME:
-  "  :echo matchstr(' I often say FIVERs, ', '\<\(\u\|\d\)\{3,}\(e\?s\)\?\>')
-  "  :echo matchstr(' I could also say SIXESes; ', '\<\(\u\|\d\)\{3,}\(e\?s\)\?\>')
-  "  :echo matchstr(' but I am banned from YIPPEe. ', '\<\(\u\|\d\)\{3,}\(e\?s\)\?\>')
-  syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}\(e\?s\)\?\>' contains=@NoSpell
+  "  :echo matchstr(' I speak often of FIVERs, ', '\<\(\u\|\d\)\{3,}\(\(e\?s\)\|ed\)\?\>')
+  "  :echo matchstr(' And rarely of SIXESes; ', '\<\(\u\|\d\)\{3,}\(\(e\?s\)\|ed\)\?\>')
+  "  :echo matchstr(' I am banned from YIPPEe; ', '\<\(\u\|\d\)\{3,}\(\(e\?s\)\|ed\)\?\>')
+  "  :echo matchstr(' but curious to be FIVERed. ', '\<\(\u\|\d\)\{3,}\(\(e\?s\)\|ed\)\?\>')
+  syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}\(\(e\?s\)\|ed\)\?\>' contains=@NoSpell
 endfunction
 
 " +----------------------------------------------------------------------+
