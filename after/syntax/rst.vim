@@ -234,6 +234,18 @@ endfunction
 
 " +----------------------------------------------------------------------+
 
+" *** SYNTAX HIGHLIGHT: <Modifier-key-combos>.
+
+function! s:DubsSyn_KeyComboNoSpell()
+  " TRYME:
+  "  :echo matchstr('<Ctrl-x> is a combo',   '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\+\%([-[:alnum:]]\| \)\+>\@=')
+  "  :echo matchstr('! <C-x> b/c ambiguous', '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\+\%([-[:alnum:]]\| \)\+>\@=')
+  syn match KeyComboNoSpell '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\+\%([-[:alnum:]]\| \)\+>\@=' contains=@NoSpell
+  hi def KeyComboNoSpell guifg=Orange
+endfunction
+
+" +----------------------------------------------------------------------+
+
 " *** SYNTAX HIGHLIGHT: Dob <Act@Gories>.
 
 " CXREF:
@@ -324,6 +336,7 @@ function! s:DubsRestWireBasic()
     call s:DubsSyn_AccountNumberNoSpell()
     call s:DubsSyn_VersionNumberNoSpell()
     call s:DubsSyn_StrikethroughNoSpell()
+    call s:DubsSyn_KeyComboNoSpell()
     call s:DubsSyn_DobActGoryNoSpell()
   else
     silent! syn clear rstCitationReference
