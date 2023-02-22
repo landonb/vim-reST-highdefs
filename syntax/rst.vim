@@ -24,7 +24,12 @@ function! s:DubsSyn_AcronymNoSpell()
   " Do not mark acronyms or abbreviations with a spelling error highlight
   " (where an acrobbreviation is all upper-case, at least 3 letters long).
   " - Nor spell check an acronym with an 's' at the end.
-  syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
+
+  " TRYME:
+  "  :echo matchstr(' I often say FIVERs, ', '\<\(\u\|\d\)\{3,}\(e\?s\)\?\>')
+  "  :echo matchstr(' I could also say SIXESes; ', '\<\(\u\|\d\)\{3,}\(e\?s\)\?\>')
+  "  :echo matchstr(' but I am banned from YIPPEe. ', '\<\(\u\|\d\)\{3,}\(e\?s\)\?\>')
+  syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}\(e\?s\)\?\>' contains=@NoSpell
 endfunction
 
 " +----------------------------------------------------------------------+
