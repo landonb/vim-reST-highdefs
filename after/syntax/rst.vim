@@ -198,6 +198,25 @@ endfunction
 
 " +----------------------------------------------------------------------+
 
+function! s:DubsSyn_StrikethroughNoSpell()
+  " SAVVY: You could exclude the ~~ squiggles from the highlight thusly:
+  "  :echo matchstr( '~~not~~',       '\%(^\|[[:space:]\n<\[({]\)\~\~\zs.\+\(\~\~\)\@=')
+  " But they look better highlighted IMHO.
+  " TRYME:
+  "  :echo matchstr( '~~not~~',       '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
+  "  :echo matchstr('not ~~not nope', '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
+  "  :echo matchstr('nor not~~ nope', '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
+  "  :echo matchstr(' ~~not~~ ',      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
+  "  :echo matchstr('<~~not~~>',      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
+  "  :echo matchstr('[~~not~~]',      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
+  "  :echo matchstr('(~~not~~)',      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
+  "  :echo matchstr('{~~not~~}',      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
+  syn match StrikethroughNoSpell '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~' contains=@NoSpell
+  hi def StrikethroughNoSpell guifg=Purple gui=strikethrough cterm=strikethrough
+endfunction
+
+" +----------------------------------------------------------------------+
+
 " *** SYNTAX HIGHLIGHT: Dob <Act@Gories>.
 
 " CXREF:
@@ -287,6 +306,7 @@ function! s:DubsRestWireBasic()
     call s:DubsSyn_DobActGoryNoSpell()
     call s:DubsSyn_AccountNumberNoSpell()
     call s:DubsSyn_VersionNumberNoSpell()
+    call s:DubsSyn_StrikethroughNoSpell()
   else
     silent! syn clear rstCitationReference
     silent! syn clear rstFootnoteReference
