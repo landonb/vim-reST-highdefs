@@ -98,6 +98,23 @@ endfunction
 
 " +----------------------------------------------------------------------+
 
+" *** SYNTAX HIGHLIGHT: Arbitrary host:///URLs.
+
+" - Cannot override rstStandaloneHyperlink by redefining it here,
+"   after system syntax defines it:
+"     ~/.local/share/vim/vim90/syntax/rst.vim:172
+"   So creating separate match and highlight.
+
+function! s:DubsSyn_rstStandaloneHyperlinkArbitraryHosts()
+  " COPYD: From ~/.local/share/vim/vim90/syntax/rst.vim:172
+  syn match rstStandaloneHyperlinkArbitraryHosts contains=@NoSpell
+    \ "\<\%(\%([[:alpha:]]\+:///\)[^[:space:]'\"<>]\+\|www[[:alnum:]_-]*\.[[:alnum:]_-]\+\.[^[:space:]'\"<>]\+\)[[:alnum:]/]"
+
+  hi def link rstStandaloneHyperlinkArbitraryHosts Identifier
+endfunction
+
+" +----------------------------------------------------------------------+
+
 " *** SYNTAX HIGHLIGHT: Email Addys, Without Spelling Error Highlight.
 
 " Syntax Profiling: EmailNoSpell takes second longest, behind DubsSyn_PasswordPossibly.
@@ -299,6 +316,7 @@ function! s:DubsRestWireBasic()
       call s:DubsSyn_PasswordPossibly()
     endif
     call s:DubsSyn_rstStandaloneHyperlinkExtended()
+    call s:DubsSyn_rstStandaloneHyperlinkArbitraryHosts()
     " Profiling: EmailNoSpell is costly.
     call s:DubsSyn_EmailNoSpell()
     call s:DubsSyn_AtHostNoSpell()
