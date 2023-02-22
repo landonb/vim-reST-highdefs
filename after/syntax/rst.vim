@@ -163,6 +163,41 @@ endfunction
 
 " +----------------------------------------------------------------------+
 
+" *** SYNTAX HIGHLIGHT: x123 account numbers; and v1.2.3 version numbers.
+
+" - Note that only the v[0-9]\+ is highlighted; nothing after the first period.
+
+function! s:DubsSyn_AccountNumberNoSpell()
+  " TRYME:
+  "  :echo matchstr( 'x123',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' x123 ', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('<x123>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[x123]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('(x123)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{x123}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  syn match AccountNumberNoSpell '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  hi def AccountNumberNoSpell guifg=Red
+endfunction
+
+" +----------------------------------------------------------------------+
+
+function! s:DubsSyn_VersionNumberNoSpell()
+  " TRYME:
+  "  :echo matchstr( 'v1.2.3',      '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
+  "  :echo matchstr(' v12 ',        '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
+  "  :echo matchstr(' v1.2 ',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
+  "  :echo matchstr(' v1.2.3 ',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
+  "  :echo matchstr('! v1.2.3.4',   '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
+  "  :echo matchstr('<v1.2.3a123>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
+  "  :echo matchstr('[v1.2.3-dev]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
+  "  :echo matchstr('(v1.2.3)',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
+  "  :echo matchstr('{v1.2.3}',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
+  syn match VersionNumberNoSpell '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=' contains=@NoSpell
+  hi def VersionNumberNoSpell guifg=Orange
+endfunction
+
+" +----------------------------------------------------------------------+
+
 " *** SYNTAX HIGHLIGHT: Dob <Act@Gories>.
 
 " CXREF:
@@ -250,6 +285,8 @@ function! s:DubsRestWireBasic()
     call s:DubsSyn_AtHostNoSpell()
     call s:DubsSyn_PoundTagNoSpell()
     call s:DubsSyn_DobActGoryNoSpell()
+    call s:DubsSyn_AccountNumberNoSpell()
+    call s:DubsSyn_VersionNumberNoSpell()
   else
     silent! syn clear rstCitationReference
     silent! syn clear rstFootnoteReference
