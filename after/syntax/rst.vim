@@ -110,8 +110,13 @@ function! s:DubsSyn_EmailNoSpell()
   "         ensures not an alphanum or newlinefollows match.
   "   Profiling: I tested \ze to end match, replacing look-ahead \@=, but not faster.
   " TRYME:
-  "  :echo matchstr(' <user@domain.com> ', '\(^\|[[:space:]]\|\n\|<\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\)\@=')
-  syn match EmailNoSpell '\(^\|[[:space:]]\|\n\|<\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\)\@=' contains=@NoSpell
+  "  :echo matchstr( 'user@domain.com',  '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' user@domain.com ', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('<user@domain.com>', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[user@domain.com]', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('(user@domain.com)', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{user@domain.com}', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\|$\)\@=')
+  syn match EmailNoSpell '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\(com\|org\|edu\|us\|io\)\([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
   hi def EmailNoSpell guifg=LightGreen
 endfunction
 
@@ -126,7 +131,14 @@ function! s:DubsSyn_AtHostNoSpell()
   " NOTE: Look-behind: \([[:space:]\n]\)\@<= ensures space or newline precedes match.
   "   Profiling: Vim docs suggest using \zs to start match, and not look-behind.
   " NOTE: Look-ahead:  \([[:space:]\n]\)\@=  ensures space or newline follows match.
-  syn match AtHostNoSpell '\(^\|[[:space:]]\|\n\)\zs@[^.,?:\[:space:]\n]\+\([.,?:[:space:]\n]\)\@=' contains=@NoSpell
+  " TRYME:
+  "  :echo matchstr( '@host',  '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' @host ', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('<@host>', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[@host]', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('(@host)', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{@host}', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
+  syn match AtHostNoSpell '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
   " Both LightMagenta and LightRed look good here. Not so much any other Light's.
   hi def AtHostNoSpell guifg=LightMagenta
 endfunction
@@ -137,8 +149,13 @@ endfunction
 
 function! s:DubsSyn_PoundTagNoSpell()
   " TRYME:
-  "  :echo matchstr(' I #tag thee ', '\(^\|[[:space:]]\|\n\)\zs#[^.,?:\[:space:]\n]\+\([.,?:[:space:]\n]\)\@=')
-  syn match PoundTagNoSpell '\(^\|[[:space:]]\|\n\)\zs#[^#.,?:\[:space:]\n]\+\([.,?:[:space:]\n]\)\@=' contains=@NoSpell
+  "  :echo matchstr( '#tag',  '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' #tag ', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('<#tag>', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[#tag]', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('(#tag)', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{#tag}', '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=')
+  syn match PoundTagNoSpell '\(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
   hi def PoundTagNoSpell guifg=Green
 endfunction
 
