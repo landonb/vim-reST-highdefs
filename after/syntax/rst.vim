@@ -135,7 +135,7 @@ function! s:DubsSyn_EmailNoSpell()
   "  :echo matchstr('[user@domain.com]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
   "  :echo matchstr('(user@domain.com)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
   "  :echo matchstr('{user@domain.com}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
-  syn match EmailNoSpell '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  syn match EmailNoSpell                 '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
   hi def EmailNoSpell guifg=LightGreen
 endfunction
 
@@ -157,7 +157,7 @@ function! s:DubsSyn_AtHostNoSpell()
   "  :echo matchstr('[@host]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
   "  :echo matchstr('(@host)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
   "  :echo matchstr('{@host}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
-  syn match AtHostNoSpell '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  syn match AtHostNoSpell      '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
   " Both LightMagenta and LightRed look good here. Not so much any other Light's.
   hi def AtHostNoSpell guifg=LightMagenta
 endfunction
@@ -174,7 +174,7 @@ function! s:DubsSyn_PoundTagNoSpell()
   "  :echo matchstr('[#tag]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
   "  :echo matchstr('(#tag)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
   "  :echo matchstr('{#tag}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
-  syn match PoundTagNoSpell '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  syn match PoundTagNoSpell   '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:alnum:]]\+\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
   hi def PoundTagNoSpell guifg=Green
 endfunction
 
@@ -186,12 +186,12 @@ endfunction
 
 function! s:DubsSyn_AccountNumberNoSpell()
   " TRYME:
-  "  :echo matchstr( 'x123',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr(' x123 ', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('<x123>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('[x123]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('(x123)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('{x123}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr( 'x123',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' x123 ',    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('<x123>',    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[x123]',    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('(x123)',    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{x123}',    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=')
   syn match AccountNumberNoSpell '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsx[[:digit:]]\+\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
   hi def AccountNumberNoSpell guifg=Red
 endfunction
@@ -209,7 +209,7 @@ function! s:DubsSyn_VersionNumberNoSpell()
   "  :echo matchstr('[v1.2.3-dev]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
   "  :echo matchstr('(v1.2.3)',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
   "  :echo matchstr('{v1.2.3}',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
-  syn match VersionNumberNoSpell '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=' contains=@NoSpell
+  syn match VersionNumberNoSpell    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=' contains=@NoSpell
   hi def VersionNumberNoSpell guifg=Orange
 endfunction
 
@@ -228,7 +228,7 @@ function! s:DubsSyn_StrikethroughNoSpell()
   "  :echo matchstr('[~~not~~]',      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
   "  :echo matchstr('(~~not~~)',      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
   "  :echo matchstr('{~~not~~}',      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
-  syn match StrikethroughNoSpell '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~' contains=@NoSpell
+  syn match StrikethroughNoSpell      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~' contains=@NoSpell
   hi def StrikethroughNoSpell guifg=Purple gui=strikethrough cterm=strikethrough
 endfunction
 
@@ -240,7 +240,7 @@ function! s:DubsSyn_KeyComboNoSpell()
   " TRYME:
   "  :echo matchstr('<Ctrl-x> is a combo',   '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\+\%([-[:alnum:]]\| \)\+>\@=')
   "  :echo matchstr('! <C-x> b/c ambiguous', '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\+\%([-[:alnum:]]\| \)\+>\@=')
-  syn match KeyComboNoSpell '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\+\%([-[:alnum:]]\| \)\+>\@=' contains=@NoSpell
+  syn match KeyComboNoSpell                  '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\+\%([-[:alnum:]]\| \)\+>\@=' contains=@NoSpell
   hi def KeyComboNoSpell guifg=Orange
 endfunction
 
@@ -255,7 +255,7 @@ endfunction
 function! s:DubsSyn_DobActGoryNoSpell()
   " TRYME:
   "  :echo matchstr('<Dob Activity@Dob Category>', '<\zs\%([[:alnum:]]\| \)\+@\%([[:alnum:]]\| \)\+>\@=')
-  syn match DobActGoryNoSpell '<\zs\%([[:alnum:]]\| \)\+@\%([[:alnum:]]\| \)\+>\@=' contains=@NoSpell
+  syn match DobActGoryNoSpell                      '<\zs\%([[:alnum:]]\| \)\+@\%([[:alnum:]]\| \)\+>\@=' contains=@NoSpell
   hi def DobActGoryNoSpell guifg=Orange
 endfunction
 

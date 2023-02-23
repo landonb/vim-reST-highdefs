@@ -30,7 +30,7 @@ function! s:DubsSyn_AcronymNoSpell()
   "  :echo matchstr(' And rarely of SIXESes; ',     '\<\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?\>')
   "  :echo matchstr(' I am banned from YIPPEe; ',   '\<\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?\>')
   "  :echo matchstr(' but curious to be FIVERed. ', '\<\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?\>')
-  syn match AcronymNoSpell '\<\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?\>' contains=@NoSpell
+  syn match AcronymNoSpell                          '\<\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?\>' contains=@NoSpell
 endfunction
 
 " +----------------------------------------------------------------------+
