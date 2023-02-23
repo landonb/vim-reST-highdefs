@@ -178,6 +178,23 @@ function! s:DubsSyn_PoundTagNoSpell()
   hi def PoundTagNoSpell guifg=Green
 endfunction
 
+" Don't highlight number-only tags matched by PoundTagNoSpell
+" (Or, rather, steal the match and mimic the Normal highlight).
+" - E.g., avoid highlighting #9 or #123.
+" - PROFILING: I assume this is cheaper than a look-ahead in PoundTagNoSpell.
+function! s:DubsSyn_PoundTagNoAllnums()
+  " TRYME:
+  "  :echo matchstr('yes #9', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:digit:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('no #9a', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:digit:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+
+  syn match PoundTagNoAllnums '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:digit:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+
+  " COPYD: Default to Dubs After Dark 'Normal' highlight:
+  "          highlight Normal ctermfg=15 guifg=White guibg=#060606
+  " - CXREF: ~/.vim/pack/landonb/start/dubs_after_dark/colors/after-dark.vim:106
+  hi def PoundTagNoAllnums ctermfg=15 guifg=White cterm=NONE
+endfunction
+
 " +----------------------------------------------------------------------+
 
 " *** SYNTAX HIGHLIGHT: x123 account numbers; and v1.2.3 version numbers.
@@ -333,6 +350,7 @@ function! s:DubsRestWireBasic()
     call s:DubsSyn_EmailNoSpell()
     call s:DubsSyn_AtHostNoSpell()
     call s:DubsSyn_PoundTagNoSpell()
+    call s:DubsSyn_PoundTagNoAllnums()
     call s:DubsSyn_AccountNumberNoSpell()
     call s:DubsSyn_VersionNumberNoSpell()
     call s:DubsSyn_StrikethroughNoSpell()
