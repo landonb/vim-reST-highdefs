@@ -168,13 +168,13 @@ endfunction
 
 function! s:DubsSyn_PoundTagNoSpell()
   " TRYME:
-  "  :echo matchstr( '#tag',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_[:alnum:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr(' #tag ', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_[:alnum:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('<#t-g>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_[:alnum:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('[#t_g]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_[:alnum:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('(#tag)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_[:alnum:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('{#tag}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_[:alnum:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=')
-  syn match PoundTagNoSpell   '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_[:alnum:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  "  :echo matchstr( '#tag',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' #tag ', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('<#t-g>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[#t_g]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('(#t.g)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{#tag}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  syn match PoundTagNoSpell   '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
   hi def PoundTagNoSpell guifg=Green
 endfunction
 
