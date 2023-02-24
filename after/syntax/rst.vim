@@ -255,9 +255,10 @@ endfunction
 
 function! s:DubsSyn_KeyComboNoSpell()
   " TRYME:
-  "  :echo matchstr('<Ctrl-x> is a combo',   '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\+\%([-[:alnum:]]\| \)\+>\@=')
-  "  :echo matchstr('! <C-x> b/c ambiguous', '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\+\%([-[:alnum:]]\| \)\+>\@=')
-  syn match KeyComboNoSpell                  '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\+\%([-[:alnum:]]\| \)\+>\@=' contains=@NoSpell
+  "  :echo matchstr('<Ctrl-x> is a combo',   '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\)\%([-[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('! <C-x> b/c ambiguous', '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\)\%([-[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('<Enter>',               '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\)\%([-[:alnum:]]\| \)*>\@=')
+  syn match KeyComboNoSpell                  '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\)\%([-[:alnum:]]\| \)*>\@=' contains=@NoSpell
   hi def KeyComboNoSpell guifg=Orange
 endfunction
 
