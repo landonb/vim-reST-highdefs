@@ -218,16 +218,18 @@ endfunction
 
 function! s:DubsSyn_VersionNumberNoSpell()
   " TRYME:
-  "  :echo matchstr( 'v1.2.3',      '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
-  "  :echo matchstr(' v12 ',        '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
-  "  :echo matchstr(' v1.2 ',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
-  "  :echo matchstr(' v1.2.3 ',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
-  "  :echo matchstr('! v1.2.3.4',   '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
-  "  :echo matchstr('<v1.2.3a123>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
-  "  :echo matchstr('[v1.2.3-dev]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
-  "  :echo matchstr('(v1.2.3)',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
-  "  :echo matchstr('{v1.2.3}',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=')
-  syn match VersionNumberNoSpell    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]\.]\|\n\|$\)\@=' contains=@NoSpell
+  "  :echo matchstr( 'v1.2.3',      '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' v12 ',        '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' v1.2 ',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' v1.2. ',      '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' v1.2.3 ',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' v1.2.3. ',    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('~ v1.2.3.4 ',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('<v1.2.3a123>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[v1.2.3-dev]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('(v1.2.3)',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{v1.2.3}',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]]\|\n\|$\)\@=')
+  syn match VersionNumberNoSpell    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zsv[[:digit:]]\+\(\.[[:digit:]]\+\(\.[[:digit:]]\+\(-\?[[:alnum:]]\+\)\?\)\?\)\?\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
   hi def VersionNumberNoSpell guifg=Orange
 endfunction
 
