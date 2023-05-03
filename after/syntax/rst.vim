@@ -257,13 +257,25 @@ endfunction
 
 " *** SYNTAX HIGHLIGHT: <Modifier-key-combos>.
 
-function! s:DubsSyn_KeyComboNoSpell()
+function! s:DubsSyn_KeyComboPrefixNoSpell()
   " TRYME:
-  "  :echo matchstr('<Ctrl-x> is a combo',   '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\)\%([-[:alnum:]]\| \)*>\@=')
-  "  :echo matchstr('! <C-x> b/c ambiguous', '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\)\%([-[:alnum:]]\| \)*>\@=')
-  "  :echo matchstr('<Enter>',               '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\)\%([-[:alnum:]]\| \)*>\@=')
-  syn match KeyComboNoSpell                  '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\)\%([-[:alnum:]]\| \)*>\@=' contains=@NoSpell
-  hi def KeyComboNoSpell guifg=Orange
+  "  :echo matchstr('<Ctrl-x> is a combo',  '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\%([-[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('! <C-x> no singlies',  '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\%([-[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('! <Enter>',            '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\%([-[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('! <F1>',               '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\%([-[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('! <F123>',             '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\%([-[:alnum:]]\| \)*>\@=')
+  syn match KeyComboNoSpellPrefix           '<\zs\%(Ctrl-\|Cmd-\|Alt-\|Shift-\|Meta-\|Super-\)\%([-[:alnum:]]\| \)*>\@=' contains=@NoSpell
+  hi def KeyComboNoSpellPrefix guifg=Orange
+endfunction
+
+function! s:DubsSyn_KeyComboSuffixNoSpell()
+  " TRYME:
+  "  :echo matchstr('! <Ctrl-x>',           '<\zs\%(Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|F[1-9]\|F1[0-3]\)>\@=')
+  "  :echo matchstr('✓ <Enter>',            '<\zs\%(Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|F[1-9]\|F1[0-3]\)>\@=')
+  "  :echo matchstr('✓ <F1>',               '<\zs\%(Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|F[1-9]\|F1[0-3]\)>\@=')
+  "  :echo matchstr('! <F123>',             '<\zs\%(Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|F[1-9]\|F1[0-3]\)>\@=')
+  syn match KeyComboNoSpellSuffix           '<\zs\%(Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|F[1-9]\|F1[0-3]\)>\@=' contains=@NoSpell
+  hi def KeyComboNoSpellSuffix guifg=Orange
 endfunction
 
 " +----------------------------------------------------------------------+
@@ -359,7 +371,8 @@ function! s:DubsRestWireBasic()
     call s:DubsSyn_AccountNumberNoSpell()
     call s:DubsSyn_VersionNumberNoSpell()
     call s:DubsSyn_StrikethroughNoSpell()
-    call s:DubsSyn_KeyComboNoSpell()
+    call s:DubsSyn_KeyComboPrefixNoSpell()
+    call s:DubsSyn_KeyComboSuffixNoSpell()
     call s:DubsSyn_DobActGoryNoSpell()
   else
     silent! syn clear rstCitationReference
