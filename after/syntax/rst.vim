@@ -47,9 +47,9 @@ endfunction
 " (To test: `:syntime clear`, `:syntime on`, open the reST document, read the results
 " using `:TabMessage syntime report`.)
 "
-" USAGE: 16-24 character word with at least 1 each: lower, upper, 0-9.
+" USAGE: 16-25 character word with at least 1 each: lower, upper, 0-9.
 "        - Special characters allowed (encouraged!) but don't matter.
-"          - It's assumed you're unlikely to use 16-24 character-long
+"          - It's assumed you're unlikely to use 16-25 character-long
 "            camelCase l33t words for anything else (or let us know if
 "            you do).
 "        - Caveat: Ignores strings that start with `` (two ticks), which is a reST ``code snip``.
@@ -72,8 +72,8 @@ function! s:DubsSyn_PasswordPossibly()
   " CUTE: If I misspell a normal FIXME/YYYY-MM-DD comment, e.g.,
   "       "FiXME/2018-03-21", then it gets highlighted as a password! So cute!!
   " TRYME:
-  "  :echo matchstr('IamONElongP4sSWoRd', '\%(^\|[[:space:]]\|\n\)\zs\%([^`]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,24\}\%([[:space:]]\|\n\|$\)\@=')
-  syn match PasswordPossibly '\%(^\|[[:space:]]\|\n\)\zs\%([^`]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,24\}\%([[:space:]]\|\n\|$\)\@=' contains=@NoSpell
+  "  :echo matchstr('IamONElongP4sSWoRd', '\%(^\|[[:space:]]\|\n\)\zs\%([^`]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,25\}\%([[:space:]]\|\n\|$\)\@=')
+  syn match PasswordPossibly '\%(^\|[[:space:]]\|\n\)\zs\%([^`]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,25\}\%([[:space:]]\|\n\|$\)\@=' contains=@NoSpell
   " NOTE: We don't need a Password15Best to include special characters unless
   "       we wanted to color them differently; currently, such passwords will
   "       match PasswordPossibly.
