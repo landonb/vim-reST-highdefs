@@ -26,11 +26,13 @@ function! s:DubsSyn_AcronymNoSpell()
   " - Nor spell check an acronym with an 's' at the end.
 
   " TRYME:
-  "  :echo matchstr(' I speak often of FIVERs, ',   '\<\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?\>')
-  "  :echo matchstr(' And rarely of SIXESes; ',     '\<\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?\>')
-  "  :echo matchstr(' I am banned from YIPPEe; ',   '\<\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?\>')
-  "  :echo matchstr(' but curious to be FIVERed. ', '\<\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?\>')
-  syn match AcronymNoSpell                          '\<\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?\>' contains=@NoSpell
+  "  :echo matchstr(' I speak often of FIVERs, ',  '\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?:\?\>')
+  "  :echo matchstr(' Lass candidly of SIXESes; ', '\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?:\?\>')
+  "  :echo matchstr(' I am told not to YIPPEe; ',  '\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?:\?\>')
+  "  :echo matchstr(' last night I was FIVERed; ', '\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?:\?\>')
+  "  :echo matchstr(' today I feel FU/NDERFUL: ',  '\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?:\?\>')
+  "  :echo matchstr(' colon to double you FUNs: ', '\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?:\?\>')
+  syn match AcronymNoSpell                         '\%(\u\|\d\)\{3,}\%(\%(e\?s\)\|ed\)\?:\?\>' contains=@NoSpell
 endfunction
 
 " +----------------------------------------------------------------------+
