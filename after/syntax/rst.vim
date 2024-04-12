@@ -159,7 +159,7 @@ function! s:DubsSyn_AtHostNoSpell()
   "  :echo matchstr('{@host}',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[-_[:alnum:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=')
   "  :echo matchstr('@_host_',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[-_[:alnum:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=')
   "  :echo matchstr(' @host-est ', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[-_[:alnum:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=')
-  syn match AtHostNoSpell      '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[-_[:alnum:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  syn match AtHostNoSpell          '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[-_[:alnum:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
   " Both LightMagenta and LightRed look good here. Not so much any other Light's.
   hi def AtHostNoSpell guifg=LightMagenta
 endfunction
