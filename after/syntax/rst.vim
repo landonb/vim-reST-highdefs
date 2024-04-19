@@ -261,12 +261,13 @@ endfunction
 
 function! s:DubsSyn_KeyComboPrefixNoSpell()
   " TRYME:
-  "  :echo matchstr('<Ctrl-x> is a combo',  '<\zs\%(Ctrl-\|C-\|Cmd-\|Alt-\|Shift-\|Meta-\|M-\|Super-\|S-\)\%([-[:alnum:]]\| \)*>\@=')
-  "  :echo matchstr('<C-x>, and singlies',  '<\zs\%(Ctrl-\|C-\|Cmd-\|Alt-\|Shift-\|Meta-\|M-\|Super-\|S-\)\%([-[:alnum:]]\| \)*>\@=')
-  "  :echo matchstr('! <Enter>',            '<\zs\%(Ctrl-\|C-\|Cmd-\|Alt-\|Shift-\|Meta-\|M-\|Super-\|S-\)\%([-[:alnum:]]\| \)*>\@=')
-  "  :echo matchstr('! <F1>',               '<\zs\%(Ctrl-\|C-\|Cmd-\|Alt-\|Shift-\|Meta-\|M-\|Super-\|S-\)\%([-[:alnum:]]\| \)*>\@=')
-  "  :echo matchstr('! <F123>',             '<\zs\%(Ctrl-\|C-\|Cmd-\|Alt-\|Shift-\|Meta-\|M-\|Super-\|S-\)\%([-[:alnum:]]\| \)*>\@=')
-  syn match KeyComboNoSpellPrefix           '<\zs\%(Ctrl-\|C-\|Cmd-\|Alt-\|Shift-\|Meta-\|M-\|Super-\|S-\)\%([-[:alnum:]]\| \)*>\@=' contains=@NoSpell
+  "  :echo matchstr('<Ctrl-x> is a combo',  '<\zs\%(Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Shift[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('<Super+T> if u want',  '<\zs\%(Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Shift[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('<C-x>, and singlies',  '<\zs\%(Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Shift[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('! <Enter>',            '<\zs\%(Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Shift[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('! <F1>',               '<\zs\%(Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Shift[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('! <F123>',             '<\zs\%(Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Shift[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
+  syn match KeyComboNoSpellPrefix           '<\zs\%(Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Shift[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=' contains=@NoSpell
   hi def KeyComboNoSpellPrefix guifg=Orange
 endfunction
 
