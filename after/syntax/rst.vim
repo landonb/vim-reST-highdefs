@@ -201,6 +201,23 @@ endfunction
 
 " +----------------------------------------------------------------------+
 
+" *** SYNTAX HIGHLIGHT: /paths.
+
+function! s:DubsSyn_SlashPathNoSpell()
+  " TRYME:
+  "  :echo matchstr( '/path',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' /path ', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('</p-th>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[/p_th]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('(/p.th)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{/path}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{/p/th}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  syn match SlashPathNoSpell   '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  hi def link SlashPathNoSpell Identifier
+endfunction
+
+" +----------------------------------------------------------------------+
+
 " *** SYNTAX HIGHLIGHT: x123 account numbers; and v1.2.3 version numbers.
 
 " - Note that only the v[0-9]\+ is highlighted; nothing after the first period.
@@ -371,6 +388,7 @@ function! s:DubsRestWireBasic()
     call s:DubsSyn_AtHostNoSpell()
     call s:DubsSyn_PoundTagNoSpell()
     call s:DubsSyn_PoundTagNoAllnums()
+    call s:DubsSyn_SlashPathNoSpell()
     call s:DubsSyn_AccountNumberNoSpell()
     call s:DubsSyn_VersionNumberNoSpell()
     call s:DubsSyn_StrikethroughNoSpell()
