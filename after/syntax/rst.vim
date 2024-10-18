@@ -201,25 +201,26 @@ endfunction
 
 " +----------------------------------------------------------------------+
 
-" *** SYNTAX HIGHLIGHT: /paths.
+" *** SYNTAX HIGHLIGHT: /paths & r/subreddits
 
 function! s:DubsSyn_SlashPathNoSpell()
   " TRYME:
-  "  :echo matchstr( '/path',   '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr(' /path ',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('</p-th>',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('[/p_th]',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('(/p.th)',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('{/path}',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('{/p/th}',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr( '~/path',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr(' ~/path ', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('<~/p-th>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('[~/p_th]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('(~/p.th)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('{~/path}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('{~/p/th}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
-  syn match SlashPathNoSpell    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  "  :echo matchstr( '/path',   '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' /path ',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('</p-th>',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[/p_th]',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('(/p.th)',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{/path}',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{/p/th}',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr( '~/path',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' ~/path ', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('<~/p-th>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[~/p_th]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('(~/p.th)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{~/path}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{~/p/th}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' r/eddit', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
+  syn match SlashPathNoSpell    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\~\?r\?/[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
   hi def link SlashPathNoSpell Identifier
 endfunction
 
