@@ -291,23 +291,23 @@ endfunction
 
 function! s:DubsSyn_KeyComboPrefixNoSpell()
   " TRYME:
-  "  :echo matchstr('<Ctrl-x> is a combo',  '<\zs\%(Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Shift[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
-  "  :echo matchstr('<Super+T> if u want',  '<\zs\%(Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Shift[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
-  "  :echo matchstr('<C-x>, and singlies',  '<\zs\%(Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Shift[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
-  "  :echo matchstr('! <Enter>',            '<\zs\%(Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Shift[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
-  "  :echo matchstr('! <F1>',               '<\zs\%(Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Shift[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
-  "  :echo matchstr('! <F123>',             '<\zs\%(Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Shift[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
-  syn match KeyComboNoSpellPrefix           '<\zs\%(Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Shift[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=' contains=@NoSpell
+  "  :echo matchstr('<Ctrl-x> is a combo',  '<\zs\%(Shift[-+]\|Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('<Super+T> if u want',  '<\zs\%(Shift[-+]\|Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('<C-x>, and singlies',  '<\zs\%(Shift[-+]\|Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('! <Enter>',            '<\zs\%(Shift[-+]\|Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('! <F1>',               '<\zs\%(Shift[-+]\|Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
+  "  :echo matchstr('! <F123>',             '<\zs\%(Shift[-+]\|Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=')
+  syn match KeyComboNoSpellPrefix           '<\zs\%(Shift[-+]\|Ctrl[-+]\|C[-+]\|Cmd[-+]\|Alt[-+]\|Meta[-+]\|M[-+]\|Super[-+]\|S[-+]\)\%([-+[:alnum:]]\| \)*>\@=' contains=@NoSpell
   hi def KeyComboNoSpellPrefix guifg=Orange
 endfunction
 
 function! s:DubsSyn_KeyComboSuffixNoSpell()
   " TRYME:
-  "  :echo matchstr('! <Ctrl-x>',           '<\zs\%(Ctrl\|Cmd\|Alt\|Shift\|Meta\|Super\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|Up\|Right\|Down\|Left\|F[1-9]\|F1[0-3]\)>\@=')
-  "  :echo matchstr('✓ <Enter>',            '<\zs\%(Ctrl\|Cmd\|Alt\|Shift\|Meta\|Super\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|Up\|Right\|Down\|Left\|F[1-9]\|F1[0-3]\)>\@=')
-  "  :echo matchstr('✓ <F1>',               '<\zs\%(Ctrl\|Cmd\|Alt\|Shift\|Meta\|Super\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|Up\|Right\|Down\|Left\|F[1-9]\|F1[0-3]\)>\@=')
-  "  :echo matchstr('! <F123>',             '<\zs\%(Ctrl\|Cmd\|Alt\|Shift\|Meta\|Super\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|Up\|Right\|Down\|Left\|F[1-9]\|F1[0-3]\)>\@=')
-  syn match KeyComboNoSpellSuffix           '<\zs\%(Ctrl\|Cmd\|Alt\|Shift\|Meta\|Super\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|Up\|Right\|Down\|Left\|F[1-9]\|F1[0-3]\)>\@=' contains=@NoSpell
+  "  :echo matchstr('! <Ctrl-x>',           '<\zs\%(Shift\|Ctrl\|Cmd\|Alt\|Meta\|Super\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|Up\|Right\|Down\|Left\|F[1-9]\|F1[0-3]\)>\@=')
+  "  :echo matchstr('✓ <Enter>',            '<\zs\%(Shift\|Ctrl\|Cmd\|Alt\|Meta\|Super\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|Up\|Right\|Down\|Left\|F[1-9]\|F1[0-3]\)>\@=')
+  "  :echo matchstr('✓ <F1>',               '<\zs\%(Shift\|Ctrl\|Cmd\|Alt\|Meta\|Super\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|Up\|Right\|Down\|Left\|F[1-9]\|F1[0-3]\)>\@=')
+  "  :echo matchstr('! <F123>',             '<\zs\%(Shift\|Ctrl\|Cmd\|Alt\|Meta\|Super\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|Up\|Right\|Down\|Left\|F[1-9]\|F1[0-3]\)>\@=')
+  syn match KeyComboNoSpellSuffix           '<\zs\%(Shift\|Ctrl\|Cmd\|Alt\|Meta\|Super\|Enter\|PageUp\|PageDown\|Backspace\|Esc\|Home\|End\|Insert\|Delete\|Tab\|Caps\|Up\|Right\|Down\|Left\|F[1-9]\|F1[0-3]\)>\@=' contains=@NoSpell
   hi def KeyComboNoSpellSuffix guifg=Orange
 endfunction
 
