@@ -190,7 +190,6 @@ function! s:DubsSyn_PoundTagNoAllnums()
   " TRYME:
   "  :echo matchstr('yes #9', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:digit:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
   "  :echo matchstr('no #9a', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:digit:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-
   syn match PoundTagNoAllnums '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:digit:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
 
   " COPYD: Default to Dubs After Dark 'Normal' highlight:
