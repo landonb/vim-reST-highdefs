@@ -200,6 +200,37 @@ endfunction
 
 " +----------------------------------------------------------------------+
 
+" *** SYNTAX HIGHLIGHT: $whateverThisIs.
+
+function! s:DubsSyn_ISeeDollarSignsNoSpell()
+  "  :echo matchstr(' $word ',          '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('<$hy-phen>',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[$u_score]',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('($parens)',        '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{$cur/lys}',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('$_usco_red',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' $new-phone ',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('$who.dis?',        '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  syn match ISeeDollarSignsNoSpell      '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+
+  " Dunno, you'd think green (Green LightGreen DarkGreen SeaGreen)
+  " but email@addys and #hash-tags are green, so trying yellow....
+  hi def ISeeDollarSignsNoSpell guifg=Yellow
+endfunction
+
+" REFER: Same idea as DubsSyn_PoundTagNoAllnums, above.
+function! s:DubsSyn_ISeeDollarSignsNoAllnums()
+  " TRYME:
+  "  :echo matchstr('match $1,000!',    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:digit:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('match $1,000/mg',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:digit:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('nohit $123foo',    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:digit:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  syn match ISeeDollarSignsNoAllnums    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:digit:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+
+  hi def ISeeDollarSignsNoAllnums ctermfg=15 guifg=White cterm=NONE
+endfunction
+
+" +----------------------------------------------------------------------+
+
 " *** SYNTAX HIGHLIGHT: /paths & r/subreddits
 
 function! s:DubsSyn_SlashPathNoSpell()
@@ -400,6 +431,8 @@ function! s:DubsRestWireBasic()
     call s:DubsSyn_AtHostNoSpell()
     call s:DubsSyn_PoundTagNoSpell()
     call s:DubsSyn_PoundTagNoAllnums()
+    call s:DubsSyn_ISeeDollarSignsNoSpell()
+    call s:DubsSyn_ISeeDollarSignsNoAllnums()
     call s:DubsSyn_SlashPathNoSpell()
     call s:DubsSyn_AccountNumberNoSpell()
     call s:DubsSyn_VersionNumberNoSpell()
