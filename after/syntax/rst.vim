@@ -188,9 +188,10 @@ endfunction
 " - PROFILING: I assume this is cheaper than a look-ahead in PoundTagNoSpell.
 function! s:DubsSyn_PoundTagNoAllnums()
   " TRYME:
-  "  :echo matchstr('yes #9', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:digit:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('no #9a', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:digit:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  syn match PoundTagNoAllnums '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:digit:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  "  :echo matchstr('yes #9', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:digit:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('✓ #1.',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:digit:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('no #9a', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:digit:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=')
+  syn match PoundTagNoAllnums '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[[:digit:]]\+\%([^-_[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
 
   " COPYD: Default to Dubs After Dark 'Normal' highlight:
   "          highlight Normal ctermfg=15 guifg=White guibg=#060606
