@@ -206,21 +206,22 @@ endfunction
 " \@> — matches exactly one
 
 function! s:DubsSyn_ISeeDollarSignsNoSpell()
-  "  :echo matchstr(' $word ',          '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr(' $x ',             '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('<$hy-phen>',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('[$u_score]',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('($parens)',        '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('$_usco_red',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr(' $new-phone ',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('$who.dis?',        '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('$:wallop',         '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('not $1',           '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('not $2,000',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('not $2.12',        '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('{$cur/lys}',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('sorta $<foo>',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
-  syn match ISeeDollarSignsNoSpell      '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$[[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  "  :echo matchstr(' $word ',          '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' $x ',             '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('<$hy-phen>',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[$u_score]',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('($parens)',        '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('$_usco_red',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' $new-phone ',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('$who.dis?',        '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('$:wallop',         '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('not $1',           '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('not $2,000',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('not $2.12',        '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{$cur/lys}',       '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('sorta $<foo>',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('not $$ or $$$$$$', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=')
+  syn match ISeeDollarSignsNoSpell      '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\$\(\$\)\@![[:alpha:][:punct:]]\@>[-_.\/[:alnum:]]*\%([^-_.[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
 
   " Dunno, you'd think green (Green LightGreen DarkGreen SeaGreen)
   " but email@addys and #hash-tags are green, so trying yellow....
