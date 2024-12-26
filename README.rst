@@ -23,6 +23,49 @@ reStructuredText syntax, this plugin highlights commonly
 used items (like emails) and disables spell checking on
 items that shouldn't be spell checked (like emails!).
 
+Show Me What You Mean!
+======================
+
+Punctuation highlights:
+
+.. image:: doc/assets/example-highlights--01--special-punctuation.png
+   :alt: Special Punctuation highlights
+   :align: center
+
+Path and URL highlights (e.g., so they don't appear
+with spelling errors and so you don't have to enclose
+in a *``code block``*):
+
+.. image:: doc/assets/example-highlights--02--paths-and-urls.png
+   :alt: Special Punctuation highlights
+   :align: center
+
+Account number and version number highlights:
+
+.. image:: doc/assets/example-highlights--03--special-prefixes.png
+   :alt: Special Prefixes highlights
+   :align: center
+
+Keyboard key highlights:
+
+.. image:: doc/assets/example-highlights--04--keyboard-keys.png
+   :alt: Keyboard Keys highlights
+   :align: center
+
+Uppercase acronym and password highlights:
+
+.. image:: doc/assets/example-highlights--05--special-words.png
+   :alt: Special Words highlights
+   :align: center
+
+Also FIVER words (what the author calls five-letter uppercased words),
+if you've installed a related plugin,
+https://github.com/landonb/vim-reST-highfive 🖐:
+
+.. image:: doc/assets/example-highlights--06--fiver-words.png
+   :alt: FIVER word highlights
+   :align: center
+
 Features: Extended Highlights
 =============================
 
@@ -120,6 +163,17 @@ This will also disable a few of the standard reST syntax
 highlights that tend to take longer to process, including
 citation, footnote, and substitution references, and
 inline internal targets.
+
+Testing your Vim
+================
+
+This project contains an example reST file you can open
+to preview highlights in your own editor:
+
+|example-highdefs.rst|_
+
+.. |example-highdefs.rst| replace:: ``doc/example-highdefs.rst``
+.. _example-highdefs.rst: ~/.vim/pack/landonb/start/vim-reST-highdefs/doc/example-highdefs.rst
 
 Tips: Related supercharged reST plugins
 =======================================

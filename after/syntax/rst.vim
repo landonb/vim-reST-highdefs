@@ -24,6 +24,15 @@
 
 " +----------------------------------------------------------------------+
 
+" CXREF: There's an example rst doc you can open to verify highlights:
+"
+"   " If you installed under ~/.vim/pack/landonb/start/:
+"   ~/.vim/pack/landonb/start/vim-reST-highdefs/doc/example-highdefs.rst
+"
+"   " Or just run this Ex command:
+"   :execute 'edit ' .. expand('%:h') .. '/../../doc/example-highdefs.rst'
+
+" +----------------------------------------------------------------------+
 " *** DEV. UTIL. FCN.: Log message to file (b/c `echom` doesn't work from syntax).
 
 " 2018-12-07: Log to file, inspired by lervag@github: b/c cannot echom from syntax file?

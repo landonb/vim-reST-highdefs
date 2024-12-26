@@ -6,9 +6,11 @@ RESTRUCTUREDTEXT BONUS SYNTAX HIGHLIGHTS	*vim-reST-highdefs*
 
 1. About This Plugin				|vim-rsthd-about|
 2. Why You Might Want to Use This Plugin	|vim-rsthd-butwhy|
-3. Features: Extended Highlights		|vim-rsthd-features|
-4. Usage: Set `redrawtime`, maybe		|vim-rsthd-redrawtime|
-5. Usage: How to disable highlights		|vim-rsthd-disablement|
+3. Show Me What You Mean!			|vim-rsthd-show-me|
+4. Features: Extended Highlights		|vim-rsthd-features|
+5. Usage: Set `redrawtime`, maybe		|vim-rsthd-redrawtime|
+6. Usage: How to disable highlights		|vim-rsthd-disablement|
+7. Testing your Vim				|vim-rsthd-testing-your-vim|
 
 ==============================================================================
 1. About This Plugin				*vim-rsthd-about*
@@ -34,7 +36,13 @@ used items (like emails) and disables spell checking on
 items that shouldn't be spell checked (like emails!).
 
 ==============================================================================
-3. Features: Extended Highlights		*vim-rsthd-features*
+3. Show Me What You Mean!			*vim-rsthd-show-me*
+
+Please see `README.rst` or the PNG files under this project's `doc/assets/`
+directory to see examples of the highlights this project enables.
+
+==============================================================================
+4. Features: Extended Highlights		*vim-rsthd-features*
 
 The following syntax is recognized by this plugin.
 
@@ -97,7 +105,7 @@ Pretty basic. The following URL formats will be highlighted:
   `about:config`
 
 ==============================================================================
-4. Usage: Set `redrawtime`, maybe		*vim-rsthd-redrawtime*
+5. Usage: Set `redrawtime`, maybe		*vim-rsthd-redrawtime*
 
 This plugin has no configuration, but you might need to configure
 Vim's `redrawtime`.
@@ -114,7 +122,7 @@ You could also apply the setting globally from your `~/.vimrc`
 or similar.
 
 ==============================================================================
-5. Usage: How to disable highlights		*vim-rsthd-disablement*
+6. Usage: How to disable highlights		*vim-rsthd-disablement*
 
 If you'd like to disable the extended highlights, set the
 `redrawtime` to 4999 or below (but not the default, 2000).
@@ -129,5 +137,21 @@ highlights that tend to take longer to process, including
 citation, footnote, and substitution references, and
 inline internal targets.
 
+==============================================================================
+7. Testing your Vim				*vim-rsthd-testing-your-vim*
+
+This project contains an example reST file you can open
+to preview highlights in your own editor.
+
+- Please see `doc/example-highdefs.rst`, which you might find
+  here if you installed under `~/.vim/pack/landonb/start`: >
+
+    ~/.vim/pack/landonb/start/vim-reST-highdefs/doc/example-highdefs.rst
+<
+  - Or you can run this command in Ex to open the file
+    relative to this help doc: >
+
+    :execute 'edit ' .. expand('%:h') .. '/example-highdefs.rst'
+<
  vim:tw=78:ts=8:ft=help:norl:
 
