@@ -1,8 +1,8 @@
-" Vim syntax highlights enabler.
-" Author: Landon Bouma (landonb &#x40; retrosoft &#x2E; com)
-" Project: https://github.com/landonb/vim-reST-highdefs#🎨
+" vim:tw=0:ts=2:sw=2:et:norl:
+" Author: Landon Bouma <https://tallybark.com/>
+" Project: https://github.com/landonb/vim-reST-highfive#🖐
 " License: https://creativecommons.org/publicdomain/zero/1.0/
-"  vim:tw=0:ts=2:sw=2:et:norl:
+" Summary: Vim syntax highlights enablement.
 
 if exists("g:loaded_reSTfold_syntax_enable_set") || &cp
   finish

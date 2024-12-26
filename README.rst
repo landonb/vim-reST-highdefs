@@ -1,8 +1,6 @@
-###############################################################
-``vim-reST-highdefs`` |em_dash| Extended reST Syntax Highlights
-###############################################################
-
-.. |em_dash| unicode:: 0x2014 .. em dash
+#########################################
+reST Syntax Highlights for Note Takers 🎨
+#########################################
 
 About This Plugin
 =================

@@ -1,8 +1,8 @@
-" Nonstandard syntax highlights so you can manage notes in Vim with reST
-" Author: Landon Bouma (landonb &#x40; retrosoft &#x2E; com)
+" vim:tw=0:ts=2:sw=2:et:norl:
+" Author: Landon Bouma <https://tallybark.com/> 
 " Project: https://github.com/landonb/vim-reST-highdefs#🎨
-" License: GPLv3
-"  vim:tw=0:ts=2:sw=2:et:norl:
+" License: GPLv3 | Copyright © 2018-2024 Landon Bouma
+" Summary: Nonstandard reST syntax highlights for notetaking in Vim
 
 " +----------------------------------------------------------------------+
 
