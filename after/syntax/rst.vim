@@ -439,12 +439,14 @@ function! s:DubsRestWireBasic()
   "   for `pass edit` commands (you don't store passwords in some other
   "   text files, do you?), so only enable if fewer than, I dunno, 1k ll.
   let l:fileLineLen = line('$')
-  let l:passwordThreshold = 1000
+  if !exists('g:RstHighDefs_PasswordThreshold')
+    let g:RstHighDefs_PasswordThreshold = 1000
+  endif
 
   if (l:redrawtimeout == l:defaultRedrawTimeout)
      \ || (l:redrawtimeout > l:syntaxEnableIfGreater)
     " Passwords first, so URL and Email matches override.
-    if l:fileLineLen < l:passwordThreshold
+    if l:fileLineLen < g:RstHighDefs_PasswordThreshold
       call s:DubsSyn_PasswordPossibly()
     endif
     call s:DubsSyn_rstStandaloneHyperlinkExtended()
