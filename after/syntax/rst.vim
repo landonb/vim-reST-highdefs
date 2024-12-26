@@ -313,15 +313,16 @@ function! s:DubsSyn_StrikethroughNoSpell()
   "  :echo matchstr( '~~not~~',       '\%(^\|[[:space:]\n<\[({]\)\~\~\zs.\+\(\~\~\)\@=')
   " But they look better highlighted IMHO.
   " TRYME:
-  "  :echo matchstr( '~~not~~',       '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
-  "  :echo matchstr('not ~~not nope', '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
-  "  :echo matchstr('nor not~~ nope', '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
-  "  :echo matchstr(' ~~not~~ ',      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
-  "  :echo matchstr('<~~not~~>',      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
-  "  :echo matchstr('[~~not~~]',      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
-  "  :echo matchstr('(~~not~~)',      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
-  "  :echo matchstr('{~~not~~}',      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~')
-  syn match StrikethroughNoSpell      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~.\+\~\~' contains=@NoSpell
+  "  :echo matchstr( '~~striked~~',   '\%(^\|[[:space:]\n<\[({]\)\zs\~\~\(\~\)\@!.\+\~\~')
+  "  :echo matchstr(' ~~striked~~ ',  '\%(^\|[[:space:]\n<\[({]\)\zs\~\~\(\~\)\@!.\+\~\~')
+  "  :echo matchstr('<~~inner~~>',    '\%(^\|[[:space:]\n<\[({]\)\zs\~\~\(\~\)\@!.\+\~\~')
+  "  :echo matchstr('[~~inner~~]',    '\%(^\|[[:space:]\n<\[({]\)\zs\~\~\(\~\)\@!.\+\~\~')
+  "  :echo matchstr('(~~inner~~)',    '\%(^\|[[:space:]\n<\[({]\)\zs\~\~\(\~\)\@!.\+\~\~')
+  "  :echo matchstr('{~~inner~~}',    '\%(^\|[[:space:]\n<\[({]\)\zs\~\~\(\~\)\@!.\+\~\~')
+  "  :echo matchstr('not ~~not nope', '\%(^\|[[:space:]\n<\[({]\)\zs\~\~\(\~\)\@!.\+\~\~')
+  "  :echo matchstr('nor not~~ nope', '\%(^\|[[:space:]\n<\[({]\)\zs\~\~\(\~\)\@!.\+\~\~')
+  "  :echo matchstr('   not ~~~~   ', '\%(^\|[[:space:]\n<\[({]\)\zs\~\~\(\~\)\@!.\+\~\~')
+  syn match StrikethroughNoSpell      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~\(\~\)\@!.\+\~\~' contains=@NoSpell
   hi def StrikethroughNoSpell guifg=Purple gui=strikethrough cterm=strikethrough
 endfunction
 
