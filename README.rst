@@ -11,6 +11,10 @@ highlights that this author finds useful.
 Install this plugin to make it easier to manage
 notes in Vim using reStructuredText markup.
 
+Note these embellishments are not recognized when rendered
+to HTML — these highlights are simply for your enjoyment
+*within Vim!*
+
 Why You Might Want to Use This Plugin
 =====================================
 
