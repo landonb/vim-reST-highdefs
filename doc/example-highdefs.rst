@@ -55,8 +55,8 @@ TESTR: *rstStandaloneHyperlinkExtendedFirefox*: about:config
 
 - USAGE: Very-special about:config only, not about:anything else
 
-Special Prefixes
-================
+Special IDs
+===========
 
 TESTR: *AccountNumberNoSpell*: x123 x4567 <x123> [x123] (x123) {x123}
 
@@ -74,6 +74,12 @@ TESTR: *VersionNumberNoSpell*: v16.14.0 v2 v1.2.3 v4.5.6a v4.5.6-dev.
   - And without the 'v', the string is unadorned and not spell-checked.
 
     - For example: 1.2.3 4.5.6a 4.5.6-dev 7.8.9-mispelled
+
+TESTR: *GitObjectIdNoSpell*: ffb02e651ef8dfdf6ba189b76c8a2615e3b35228
+
+- USAGE: A hexadecimal string between 7 and 40 characters is highlighted.
+
+  - For example: ffb02e6 but not ffb02e.
 
 Keyboard Keys
 =============

@@ -327,6 +327,29 @@ endfunction
 
 " +----------------------------------------------------------------------+
 
+" *** SYNTAX HIGHLIGHT: Git database object SHA-1 hash IDs.
+
+" - A full object ID is 40 characters.
+"
+" - And we'll assume no one would use less than 7.
+
+function! s:DubsSyn_GitObjectIdNoSpell()
+  " TRYME:
+  "  :echo matchstr('yes ffb02e6',                                    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs[[:xdigit:]]\{7,40\}\%(^\|[[:space:]]\|\n\|>\|\]\|)\|}\|\n\|$\)\@=')
+  "  :echo matchstr('not ffb02e ',                                    '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs[[:xdigit:]]\{7,40\}\%(^\|[[:space:]]\|\n\|>\|\]\|)\|}\|\n\|$\)\@=')
+  "  :echo matchstr('yes ffb02e651ef8dfdf6ba189b76c8a2615e3b35228',   '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs[[:xdigit:]]\{7,40\}\%(^\|[[:space:]]\|\n\|>\|\]\|)\|}\|\n\|$\)\@=')
+  "  :echo matchstr('not ffb02e651ef8dfdf6ba189b76c8a2615e3b352289',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs[[:xdigit:]]\{7,40\}\%(^\|[[:space:]]\|\n\|>\|\]\|)\|}\|\n\|$\)\@=')
+  "  :echo matchstr('<ffb02e6>',                                      '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs[[:xdigit:]]\{7,40\}\%(^\|[[:space:]]\|\n\|>\|\]\|)\|}\|\n\|$\)\@=')
+  "  :echo matchstr('[ffb02e6]',                                      '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs[[:xdigit:]]\{7,40\}\%(^\|[[:space:]]\|\n\|>\|\]\|)\|}\|\n\|$\)\@=')
+  "  :echo matchstr('(ffb02e6)',                                      '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs[[:xdigit:]]\{7,40\}\%(^\|[[:space:]]\|\n\|>\|\]\|)\|}\|\n\|$\)\@=')
+  "  :echo matchstr('{ffb02e6}',                                      '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs[[:xdigit:]]\{7,40\}\%(^\|[[:space:]]\|\n\|>\|\]\|)\|}\|\n\|$\)\@=')
+  syn match GitObjectIdNoSpell                                        '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs[[:xdigit:]]\{7,40\}\%(^\|[[:space:]]\|\n\|>\|\]\|)\|}\|\n\|$\)\@=' contains=@NoSpell
+
+  hi def GitObjectIdNoSpell guifg=LightBlue
+endfunction
+
+" +----------------------------------------------------------------------+
+
 function! s:DubsSyn_StrikethroughNoSpell()
   " SAVVY: You could exclude the ~~ squiggles from the highlight thusly:
   "  :echo matchstr( '~~not~~',       '\%(^\|[[:space:]\n<\[({]\)\~\~\zs.\+\(\~\~\)\@=')
@@ -474,6 +497,7 @@ function! s:DubsRestWireBasic()
     call s:DubsSyn_SlashPathNoSpell()
     call s:DubsSyn_AccountNumberNoSpell()
     call s:DubsSyn_VersionNumberNoSpell()
+    call s:DubsSyn_GitObjectIdNoSpell()
     call s:DubsSyn_StrikethroughNoSpell()
     call s:DubsSyn_KeyComboPrefixNoSpell()
     call s:DubsSyn_KeyComboSuffixNoSpell()
