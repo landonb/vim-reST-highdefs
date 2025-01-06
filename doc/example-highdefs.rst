@@ -63,11 +63,17 @@ TESTR: *AccountNumberNoSpell*: x123 x4567 <x123> [x123] (x123) {x123}
 - USAGE: An ``x`` prefix signifies an account number (e.g., at a bank)
 
 TESTR: *VersionNumberNoSpell*: v16.14.0 v2 v1.2.3 v4.5.6a v4.5.6-dev.
-    v1.2.3 v12 v1.2 v1.2.3 v1.2.3a123 v1.2.3-dev v1.2.3 v1.2.3
-    but not all of v1.2.3.4.
 
-- USAGE: Number without 'v' prefix are unadorned, and not spell-checked.
-  - For example: 1.2.3 4.5.6a 4.5.6-dev 7.8.9-mispelled
+- USAGE: A ``v`` prefix starts a version, with up to 3 dotted parts.
+
+  - For example: v1 v99 v1.2 v1.2.3 v1.2.3a123 v1.2.3-dev
+
+    - Note the pattern isn't too savvy — it'll match the first
+      part of v1.2.3.4 but leave the ".4" sitting alone, plain.
+
+  - And without the 'v', the string is unadorned and not spell-checked.
+
+    - For example: 1.2.3 4.5.6a 4.5.6-dev 7.8.9-mispelled
 
 Keyboard Keys
 =============
