@@ -135,7 +135,7 @@ TESTR: *FIVERsAlways_Hot*: MAYBE AWAIT
 
 - USAGE: These 2 FIVERs are always highlighted without ``/`` or ``:``.
 
-TESTR: *FiverWordsXXXXDs*: FIXED ANNUL NOTED COPYD ORDRD SNIPD RECVD SPOKE WAITD
+TESTR: *FIVERWordsXXXXDs*: FIXED ANNUL NOTED COPYD ORDRD SNIPD RECVD SPOKE WAITD
 
 - USAGE: These 8 FIVERs are always rendered with strikethrough.
 
