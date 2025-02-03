@@ -120,8 +120,8 @@ TESTR: *PasswordPossibly*: IamONElongP4sSWoRd [16-24 chars. mixed case + number]
 FIVER Words
 ===========
 
-.. If vim-reST-highfive is installed / CXREF:
-    ~/.vim/pack/landonb/start/vim-reST-highfive/after/syntax/rst.vim
+.. CXREF: If vim-reST-highfive is installed in DepoXy env., see:
+   ~/.kit/nvim/landonb/start/vim-reST-highfive/after/syntax/rst.vim
 
 TESTR: *FIVERsPunctuated*: 12E45/ and ABCDE: alt. <WORKS/> [SAVVY:] (RECAP/) {CRIPE:}
 

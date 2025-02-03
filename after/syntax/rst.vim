@@ -208,7 +208,7 @@ function! s:DubsSyn_PoundTagNoAllnums()
 
   " COPYD: Default to Dubs After Dark 'Normal' highlight:
   "          highlight Normal ctermfg=15 guifg=White guibg=#060606
-  " - CXREF: ~/.vim/pack/landonb/start/dubs_after_dark/colors/after-dark.vim:106
+  " - CXREF: ~/.kit/nvim/landonb/start/dubs_after_dark/colors/after-dark.vim:106
   hi def PoundTagNoAllnums ctermfg=15 guifg=White cterm=NONE
 endfunction
 
