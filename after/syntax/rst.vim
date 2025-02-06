@@ -486,6 +486,14 @@ function! s:DubsRestWireBasic()
     let g:RstHighDefs_PasswordThreshold = 1000
   endif
 
+  " FIXME/2025-01-31: PERFC: Some of the highlights disabled by
+  " this switch are noticeably draggy, even on a small rst file.
+  " - FIXME- Investigate further (isolate the slow match pattern(s)).
+  " - MAYBE: Add user options to make enableable from config.
+  "   - E.g., let user specify highlights individually to enable.
+  "   - For now, we'll just disable all of these... :/
+  let l:profile_very_limited = 1
+
   if (l:redrawtimeout == l:defaultRedrawTimeout)
      \ || (l:redrawtimeout > l:syntaxEnableIfGreater)
     " Passwords first, so URL and Email matches override.
@@ -494,21 +502,30 @@ function! s:DubsRestWireBasic()
     endif
     call s:DubsSyn_rstStandaloneHyperlinkExtended()
     call s:DubsSyn_rstStandaloneHyperlinkArbitraryHosts()
-    " Profiling: EmailNoSpell is costly.
+    " PERFC: I thought EmailNoSpell was a drag at first,
+    " but seems okay.
     call s:DubsSyn_EmailNoSpell()
     call s:DubsSyn_AtHostNoSpell()
     call s:DubsSyn_PoundTagNoSpell()
     call s:DubsSyn_PoundTagNoAllnums()
-    call s:DubsSyn_ISeeDollarSignsNoSpell()
-    call s:DubsSyn_ISeeDollarSignsNoAllnums()
+    if ! l:profile_very_limited
+      call s:DubsSyn_ISeeDollarSignsNoSpell()
+      call s:DubsSyn_ISeeDollarSignsNoAllnums()
+    endif
     call s:DubsSyn_SlashPathNoSpell()
-    call s:DubsSyn_AccountNumberNoSpell()
+    if ! l:profile_very_limited
+      call s:DubsSyn_AccountNumberNoSpell()
+    endif
     call s:DubsSyn_VersionNumberNoSpell()
-    call s:DubsSyn_GitObjectIdNoSpell()
+    if ! l:profile_very_limited
+      call s:DubsSyn_GitObjectIdNoSpell()
+    endif
     call s:DubsSyn_StrikethroughNoSpell()
-    call s:DubsSyn_KeyComboPrefixNoSpell()
-    call s:DubsSyn_KeyComboSuffixNoSpell()
-    call s:DubsSyn_DobActGoryNoSpell()
+    if ! l:profile_very_limited
+      call s:DubsSyn_KeyComboPrefixNoSpell()
+      call s:DubsSyn_KeyComboSuffixNoSpell()
+      call s:DubsSyn_DobActGoryNoSpell()
+    endif
   else
     silent! syn clear rstCitationReference
     silent! syn clear rstFootnoteReference
