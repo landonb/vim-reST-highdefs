@@ -1,5 +1,5 @@
 " vim:tw=0:ts=2:sw=2:et:norl:
-" Author: Landon Bouma <https://tallybark.com/> 
+" Author: Landon Bouma <https://tallybark.com/>
 " Project: https://github.com/landonb/vim-reST-highdefs#🎨
 " License: GPLv3 | Copyright © 2018-2024 Landon Bouma
 " Summary: Nonstandard reST syntax highlights for notetaking in Vim
