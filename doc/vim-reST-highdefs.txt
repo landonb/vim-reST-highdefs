@@ -1,6 +1,6 @@
 *vim-reST-highdefs.txt*	Special reST Highlights		2024 Dec 25
 
-VIM REST HIGHDEFS 🎨 reST Syntax Highlights for Notetaking~
+VIM REST HIGHDEFS 🎨 reST Syntax Highlights for Notetaking ~
 
 RESTRUCTUREDTEXT BONUS SYNTAX HIGHLIGHTS	*vim-reST-highdefs*
 
