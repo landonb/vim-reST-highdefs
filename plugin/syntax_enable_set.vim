@@ -1,6 +1,6 @@
 " vim:tw=0:ts=2:sw=2:et:norl:
 " Author: Landon Bouma <https://tallybark.com/>
-" Project: https://github.com/landonb/vim-reST-highfive#🖐
+" Project: https://github.com/landonb/vim-reST-highdefs#🎨
 " License: https://creativecommons.org/publicdomain/zero/1.0/
 " Summary: Vim syntax highlights enablement.
 
