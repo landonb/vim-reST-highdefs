@@ -121,7 +121,7 @@ FIVER Words
 ===========
 
 .. CXREF: If vim-reST-highfive is installed in DepoXy env., see:
-   ~/.kit/nvim/landonb/start/vim-reST-highfive/after/syntax/rst.vim
+   ~/.kit/nvim/landonb/vim-reST-highfive/after/syntax/rst.vim
 
 TESTR: *FIVERsPunctuated*: 12E45/ and ABCDE: alt. <WORKS/> [SAVVY:] (RECAP/) {CRIPE:}
 
