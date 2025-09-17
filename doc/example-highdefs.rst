@@ -125,6 +125,8 @@ FIVER Words
 
 TESTR: *FIVERsPunctuated*: 12E45/ and ABCDE: alt. <WORKS/> [SAVVY:] (RECAP/) {CRIPE:}
 
+- TESTR: *FIVERsPunctuated* now w/ limited punctuation: FIVE!: AC/DC/ AC\AB: HOW?!/ A-OK!:
+
 - USAGE: Any FIVER followed by ``/`` or ``:`` is highlighted.
 
 TESTR: *FIVERsPunctuatedNoAllnums*: Not 12345: 42069/ etc.
