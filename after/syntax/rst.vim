@@ -139,13 +139,14 @@ function! s:DubsSyn_EmailNoSpell()
   "         ensures not an alphanum or newlinefollows match.
   "   Profiling: I tested \ze to end match, replacing look-ahead \@=, but not faster.
   " TRYME:
-  "  :echo matchstr( 'user@domain.com',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr(' user@domain.com ', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('<user@domain.com>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('[user@domain.com]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('(user@domain.com)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
-  "  :echo matchstr('{user@domain.com}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
-  syn match EmailNoSpell                 '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  "  :echo matchstr( 'user@domain.com',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr(' user@domain.com ', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('<user@domain.com>', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('[user@domain.com]', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('(user@domain.com)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('{user@domain.com}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
+  "  :echo matchstr('path/foo@bar.com}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
+  syn match EmailNoSpell                 '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
 
   hi def EmailNoSpell guifg=LightGreen
 endfunction
