@@ -77,7 +77,7 @@ function! s:DubsSyn_PasswordPossibly()
   " TRYME: To test, run `syn clear`, then try the new `syn match`.
   " SAVVY: \@= is Vim look-ahead. I also tried \@<= look-behind but it didn't work for me.
   " SAVVY: Do this before EmailNoSpell, so that we don't think emails are passwords.
-  " SAVVY: Trying {15,16} just to not match too much.
+  " SAVVY: Restricting {16,25} to limit false-positive matches.
   " OCUTE: If I misspell a normal FIXME/YYYY-MM-DD comment, e.g.,
   "        "FiXME/2018-03-21", then it gets highlighted as a password! So cute!!
   " TRYME:
