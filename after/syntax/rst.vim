@@ -82,7 +82,7 @@ function! s:DubsSyn_PasswordPossibly()
   "       "FiXME/2018-03-21", then it gets highlighted as a password! So cute!!
   " TRYME:
   "  :echo matchstr('IamONElongP4sSWoRd', '\%(^\|[[:space:]]\|\n\)\zs\%([^`]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,25\}\%([[:space:]]\|\n\|$\)\@=')
-  syn match PasswordPossibly '\%(^\|[[:space:]]\|\n\)\zs\%([^`]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,25\}\%([[:space:]]\|\n\|$\)\@=' contains=@NoSpell
+  syn match PasswordPossibly              '\%(^\|[[:space:]]\|\n\)\zs\%([^`]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,25\}\%([[:space:]]\|\n\|$\)\@=' contains=@NoSpell
 
   " NOTE: We don't need a Password15Best to include special characters unless
   "       we wanted to color them differently; currently, such passwords will
