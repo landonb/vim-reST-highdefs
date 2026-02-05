@@ -81,8 +81,10 @@ function! s:DubsSyn_PasswordPossibly()
   " OCUTE: If I misspell a normal FIXME/YYYY-MM-DD comment, e.g.,
   "        "FiXME/2018-03-21", then it gets highlighted as a password! So cute!!
   " TRYME:
-  "  :echo matchstr('IamONElongP4sSWoRd', '\%(^\|[[:space:]]\|\n\)\zs\%([^`]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,25\}\%([[:space:]]\|\n\|$\)\@=')
-  syn match PasswordPossibly              '\%(^\|[[:space:]]\|\n\)\zs\%([^`]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,25\}\%([[:space:]]\|\n\|$\)\@=' contains=@NoSpell
+  "  :echo matchstr('IamONElongP4sSWoRd',   '\%(^\|[[:space:]]\|\n\)\zs\%([^`(]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,25\}\%([[:space:]]\|\n\|$\)\@=')
+  "  :echo matchstr('`NOTaSTINKNP4sSWoRd',  '\%(^\|[[:space:]]\|\n\)\zs\%([^`(]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,25\}\%([[:space:]]\|\n\|$\)\@=')
+  "  :echo matchstr('((NOTAPWD/2025-09-16', '\%(^\|[[:space:]]\|\n\)\zs\%([^`(]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,25\}\%([[:space:]]\|\n\|$\)\@=')
+  syn match PasswordPossibly                '\%(^\|[[:space:]]\|\n\)\zs\%([^`(]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,25\}\%([[:space:]]\|\n\|$\)\@=' contains=@NoSpell
 
   " SAVVY: We don't need a Password15Best to include special characters unless
   "        we wanted to color them differently; currently, such passwords will
