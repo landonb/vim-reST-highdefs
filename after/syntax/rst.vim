@@ -43,8 +43,8 @@ function! s:log(message)
     \ '>> /tmp/vim_log_dubs_after_syntax_rst'
 endfunction
 
-" NOTE: [lb]: I can `call s:log('...')` and `tail -F /tmp/vim_log_dubs_after_syntax_rst`
-"       successfully. But I cannot `echom '...'` anything. Not sure why.
+" SAVVY: [lb]: I can `call s:log('...')` and `tail -F /tmp/vim_log_dubs_after_syntax_rst`
+"        successfully. But I cannot `echom '...'` anything. Not sure why.
 
 " +----------------------------------------------------------------------+
 
@@ -74,19 +74,19 @@ function! s:DubsSyn_PasswordPossibly()
   "     "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})"
   "   );
   " But completely Vimified! E.g., Perl's look-ahead (?=) is Vim's \(\)\@=
-  " HINT: To test, run `syn clear`, then try the new `syn match`.
-  " NOTE: \@= is Vim look-ahead. I also tried \@<= look-behind but it didn't work for me.
-  " NOTE: Do this before EmailNoSpell, so that we don't think emails are passwords.
-  " NOTE: Trying {15,16} just to not match too much.
-  " CUTE: If I misspell a normal FIXME/YYYY-MM-DD comment, e.g.,
-  "       "FiXME/2018-03-21", then it gets highlighted as a password! So cute!!
+  " TRYME: To test, run `syn clear`, then try the new `syn match`.
+  " SAVVY: \@= is Vim look-ahead. I also tried \@<= look-behind but it didn't work for me.
+  " SAVVY: Do this before EmailNoSpell, so that we don't think emails are passwords.
+  " SAVVY: Trying {15,16} just to not match too much.
+  " OCUTE: If I misspell a normal FIXME/YYYY-MM-DD comment, e.g.,
+  "        "FiXME/2018-03-21", then it gets highlighted as a password! So cute!!
   " TRYME:
   "  :echo matchstr('IamONElongP4sSWoRd', '\%(^\|[[:space:]]\|\n\)\zs\%([^`]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,25\}\%([[:space:]]\|\n\|$\)\@=')
   syn match PasswordPossibly              '\%(^\|[[:space:]]\|\n\)\zs\%([^`]\{2\}\)\@=\%([^[:space:]]*[a-z]\)\@=\%([^[:space:]]*[A-Z]\)\@=\%([^[:space:]]*[0-9]\)\@=[^[:space:]]\{16,25\}\%([[:space:]]\|\n\|$\)\@=' contains=@NoSpell
 
-  " NOTE: We don't need a Password15Best to include special characters unless
-  "       we wanted to color them differently; currently, such passwords will
-  "       match PasswordPossibly.
+  " SAVVY: We don't need a Password15Best to include special characters unless
+  "        we wanted to color them differently; currently, such passwords will
+  "        match PasswordPossibly.
   hi def PasswordPossibly term=reverse guibg=DarkRed guifg=Yellow ctermfg=1 ctermbg=6
 endfunction
 
@@ -132,12 +132,12 @@ endfunction
 
 function! s:DubsSyn_EmailNoSpell()
   " (lb) added this to ignore spelling errors on words such as `emails@somewhere.com`.
-  " NOTE: Look-behind: \(^\|[[:space:]]\|\n\|<\)\zs
-  "         ensures start of line, space, newline, or  left angle precedes match.
-  "   Profiling: Vim docs suggest using \zs to start match, and not look-behind.
-  " NOTE: Look-ahead:  \([^[:alnum:]]\|\n\)\@=
-  "         ensures not an alphanum or newlinefollows match.
-  "   Profiling: I tested \ze to end match, replacing look-ahead \@=, but not faster.
+  " SAVVY: Look-behind: \(^\|[[:space:]]\|\n\|<\)\zs
+  "          ensures start of line, space, newline, or  left angle precedes match.
+  " - Profiling: Vim docs suggest using \zs to start match, and not look-behind.
+  " SAVVY: Look-ahead:  \([^[:alnum:]]\|\n\)\@=
+  "          ensures not an alphanum or newlinefollows match.
+  " - Profiling: I tested \ze to end match, replacing look-ahead \@=, but not faster.
   " TRYME:
   "  :echo matchstr( 'user@domain.com',  '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
   "  :echo matchstr(' user@domain.com ', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
@@ -159,9 +159,9 @@ function! s:DubsSyn_AtHostNoSpell()
   " (lb) added this to ignore spelling errors on words such as `@somehost`,
   " which is a convention I've been using recently to identify what could
   " also be referred to as ``host``, but @host is cleaner.
-  " NOTE: Look-behind: \([[:space:]\n]\)\@<= ensures space or newline precedes match.
-  "   Profiling: Vim docs suggest using \zs to start match, and not look-behind.
-  " NOTE: Look-ahead:  \([[:space:]\n]\)\@=  ensures space or newline follows match.
+  " SAVVY: Look-behind: \([[:space:]\n]\)\@<= ensures space or newline precedes match.
+  " - Profiling: Vim docs suggest using \zs to start match, and not look-behind.
+  " SAVVY: Look-ahead:  \([[:space:]\n]\)\@=  ensures space or newline follows match.
   " TRYME:
   "  :echo matchstr( '@host',      '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
   "  :echo matchstr(' @host ',     '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs@[-_.[:alnum:]]\+\%([^-_.[:alnum:]]\|\n\|$\)\@=')
