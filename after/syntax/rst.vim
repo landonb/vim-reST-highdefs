@@ -148,7 +148,7 @@ function! s:DubsSyn_EmailNoSpell()
   "  :echo matchstr('(user@domain.com)', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
   "  :echo matchstr('{user@domain.com}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
   "  :echo matchstr('path/foo@bar.com}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=')
-  syn match EmailNoSpell                 '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
+  syn match EmailNoSpell                 '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs\<[^/[:space:]]\+@[^[:space:]]\+\.\%(com\|org\|edu\|co\|us\|io\)\%([^[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
 
   hi def EmailNoSpell guifg=LightGreen
 endfunction
