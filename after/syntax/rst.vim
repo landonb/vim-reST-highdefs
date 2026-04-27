@@ -196,7 +196,11 @@ function! s:DubsSyn_PoundTagNoSpell()
   "  :echo matchstr('{#t/g}', '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=')
   syn match PoundTagNoSpell   '\%(^\|[[:space:]]\|\n\|<\|\[\|(\|{\)\zs#[-_./[:alnum:]]\+\%([^-_./[:alnum:]]\|\n\|$\)\@=' contains=@NoSpell
 
-  hi def PoundTagNoSpell guifg=Green
+  " HSTRY/2026-04-27: Was guifg=Green which is almost too dark against a black background.
+  " - SlateBlue is almost as dark as Green, but feels easier to read, almost softer to the
+  "   eyes than Green, which seems to contrast oddly with a black background ('least IMHO).
+  " - Also demoed LightGreen, but too bright, draws too much attention for hash tag high't.
+  hi def PoundTagNoSpell guifg=SlateBlue
 endfunction
 
 " Don't highlight number-only tags matched by PoundTagNoSpell
