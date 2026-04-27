@@ -377,7 +377,8 @@ function! s:DubsSyn_StrikethroughNoSpell()
   "  :echo matchstr('   not ~~~~   ', '\%(^\|[[:space:]\n<\[({]\)\zs\~\~\(\~\)\@!.\+\~\~')
   syn match StrikethroughNoSpell      '\%(^\|[[:space:]\n<\[({]\)\zs\~\~\(\~\)\@!.\+\~\~' contains=@NoSpell
 
-  hi def StrikethroughNoSpell guifg=Purple gui=strikethrough cterm=strikethrough
+  " HSTRY/2026-04-27: Was guifg=Purple for too long (cannot easily read against black bg).
+  hi def StrikethroughNoSpell guifg=Gray gui=strikethrough cterm=strikethrough
 endfunction
 
 " +----------------------------------------------------------------------+
