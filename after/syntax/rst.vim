@@ -200,7 +200,10 @@ function! s:DubsSyn_PoundTagNoSpell()
   " - SlateBlue is almost as dark as Green, but feels easier to read, almost softer to the
   "   eyes than Green, which seems to contrast oddly with a black background ('least IMHO).
   " - Also demoed LightGreen, but too bright, draws too much attention for hash tag high't.
-  hi def PoundTagNoSpell guifg=SlateBlue
+  "   - ORNOT: Maybe SlateBlue is too dark to read. LightGreen a good compromise of literal
+  "     readability without being *too* bright (although it's still a little *too* bright).
+  " hi def PoundTagNoSpell guifg=SlateBlue
+  hi def PoundTagNoSpell guifg=LightGreen
 endfunction
 
 " Don't highlight number-only tags matched by PoundTagNoSpell
