@@ -267,6 +267,16 @@ endfunction
 
 " *** SYNTAX HIGHLIGHT: /paths & r/subreddits
 
+" AWAIT/MAYBE/2026-06-04: Changed all [:alnum:] to [:graph:], but maybe
+" move to new highlight that uses ending slash in the match.
+" - E.g., revert this to [:alnum:]; and
+"   make new match using [:graph:], but require ending slash.
+"   - E.g., I changed to [:graph:] because I wanted /regex.*/
+"     to be highlighted.
+"     - AWAIT: Let's use this more relaxed match for a while and
+"       see if there's a reason to split in twain and revert
+"       SlashPathNoSpell to its stricter roots.
+
 function! s:DubsSyn_SlashPathNoSpell()
   " TRYME:
   "                                  Starts w/ — ^ :space: \n <[({: — then — ~ . .. ... r — then — / — then :graph: chars (you'd think :fname:, but :graphs lets use highlight /regex.*/, e.g., asterisks, too)
