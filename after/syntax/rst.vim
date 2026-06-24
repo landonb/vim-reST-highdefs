@@ -225,6 +225,21 @@ endfunction
 
 " +----------------------------------------------------------------------+
 
+" *** SYNTAX HIGHLIGHT: Like a parenthetical #/ also call a slash-thought
+"
+" HSTRY/2026-06-24: Author has started using /emoticons.
+" - E.g., "The door was already unlocked when I checked /shrug"
+
+function! s:DubsSyn_SingleLineComment()
+  " TRYME:
+  "  :echo matchstr('I like rainy days #/ sue me', '\%(^\|[[:space:]\n]\)\zs#\/[[:space:]].\+$')
+  syn match SingleLineComment                      '\%(^\|[[:space:]\n]\)\zs#\/[[:space:]].\+$' contains=@NoSpell
+
+  hi def SingleLineComment guifg=Orange
+endfunction
+
+" +----------------------------------------------------------------------+
+
 " *** SYNTAX HIGHLIGHT: $whateverThisIs.
 
 " \@> — matches exactly one
@@ -527,6 +542,7 @@ function! s:DubsRestWireBasic()
     call s:DubsSyn_AtHostNoSpell()
     call s:DubsSyn_PoundTagNoSpell()
     call s:DubsSyn_PoundTagNoAllnums()
+    call s:DubsSyn_SingleLineComment()
     if ! l:profile_very_limited
       call s:DubsSyn_ISeeDollarSignsNoSpell()
       call s:DubsSyn_ISeeDollarSignsNoAllnums()
