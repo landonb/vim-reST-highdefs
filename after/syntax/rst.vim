@@ -104,7 +104,7 @@ function! s:DubsSyn_rstStandaloneHyperlinkExtended()
   hi def link rstStandaloneHyperlinkExtendedChrome Identifier
 
   syn match rstStandaloneHyperlinkExtendedFirefox contains=@NoSpell
-      \ "\<about:config\>"
+      \ "\<about:\(config\|keyboard\)\>"
   hi def link rstStandaloneHyperlinkExtendedFirefox Identifier
 endfunction
 
