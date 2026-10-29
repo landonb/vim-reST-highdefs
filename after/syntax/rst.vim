@@ -103,8 +103,9 @@ function! s:DubsSyn_rstStandaloneHyperlinkExtended()
       \ "\<chrome://[^[:space:]'\"<>]\+"
   hi def link rstStandaloneHyperlinkExtendedChrome Identifier
 
+  " REFER: See full list at 'about:about'.
   syn match rstStandaloneHyperlinkExtendedFirefox contains=@NoSpell
-      \ "\<about:\(config\|keyboard\)\>"
+      \ "\<about:\(about|\config\|keyboard\|preferences\)\>"
   hi def link rstStandaloneHyperlinkExtendedFirefox Identifier
 endfunction
 
