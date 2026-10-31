@@ -105,7 +105,7 @@ function! s:DubsSyn_rstStandaloneHyperlinkExtended()
 
   " REFER: See full list at 'about:about'.
   syn match rstStandaloneHyperlinkExtendedFirefox contains=@NoSpell
-      \ "\<about:\(about|\config\|keyboard\|preferences\)\>"
+      \ "\<about:\(about\|config\|keyboard\|preferences\)\>"
   hi def link rstStandaloneHyperlinkExtendedFirefox Identifier
 endfunction
 
